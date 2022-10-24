@@ -100,7 +100,7 @@ const ProjectMobile = ({
                       objectPosition="left top"
                       width={"1000"}
                       height={"1000"}
-                      onClick={() => archiveAction(i)}
+                      onClick={() => archiveAction(i+1)}
                     />
                   </div>
                 ))}
