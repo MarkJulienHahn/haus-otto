@@ -41,7 +41,7 @@ const About = ({ data }) => {
             <h2>Selected Press</h2>
             <h2>
               {selected.map((press, i) => (
-                <>
+                <span key={i}>
                   <SelectedPress
                     lable={press.lable}
                     img={press.image}
@@ -52,7 +52,7 @@ const About = ({ data }) => {
                     setHoverImgHeight={setHoverImgHeight}
                   />
                   {i < selected.length - 1 && " – "}
-                </>
+                </span>
               ))}
             </h2>
             <div className={styles2.headerImg}>
@@ -73,7 +73,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutUpcomingShows}>
               {data.upcomingShows.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <h2>{show.title}</h2>
                   <h2>{show.year}</h2>
                 </div>
@@ -86,7 +86,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutUpcomingShows}>
               {data.pastShows.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <h2>{show.title}</h2>
                   <h2>{show.year}</h2>
                 </div>
@@ -99,7 +99,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.awards.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <h2>{show.title}</h2>
                   <h2>{show.year}</h2>
                 </div>
@@ -112,7 +112,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.partOf.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <h2>{show.title}</h2>
                   <h2>{show.year}</h2>
                 </div>
@@ -125,7 +125,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.workshops.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <h2>{show.title}</h2>
                   <h2>{show.year}</h2>
                 </div>
@@ -153,7 +153,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutUpcomingShows}>
               {data.upcomingShows.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <p>{show.title}</p>
                   <p>{show.year}</p>
                 </div>
@@ -165,7 +165,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutUpcomingShows}>
               {data.pastShows.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <p>{show.title}</p>
                   <p>{show.year}</p>
                 </div>
@@ -177,7 +177,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.awards.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <p>{show.title}</p>
                   <p>{show.year}</p>
                 </div>
@@ -189,7 +189,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.partOf.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <p>{show.title}</p>
                   <p>{show.year}</p>
                 </div>
@@ -201,7 +201,7 @@ const About = ({ data }) => {
             </div>
             <div className={styles.aboutPastShows}>
               {data.workshops.map((show, i) => (
-                <div className={styles.aboutEntry}>
+                <div className={styles.aboutEntry} key={i}>
                   <p>{show.title}</p>
                   <p>{show.year}</p>
                 </div>

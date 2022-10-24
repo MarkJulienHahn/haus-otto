@@ -22,7 +22,6 @@ const SwiperInner = ({
   setCurrentSlide,
   images,
 }) => {
-  const swiper = useSwiper();
   const swiperRef = useRef(null);
 
   const updateIndex = useCallback(
@@ -66,7 +65,7 @@ const SwiperInner = ({
     >
       <Swiper className="swiper swiper-17-1" ref={swiperRef} loop={true}>
         {images.map((image, i) => (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <Image
               src={image.url}
               layout="responsive"
