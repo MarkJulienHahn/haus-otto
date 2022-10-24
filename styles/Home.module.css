@@ -1,0 +1,8 @@
+.main {
+    padding: var(--margin-S)
+}
+
+
+@media screen and (max-width: 700px) {
+    .main { padding: 0;}
+}

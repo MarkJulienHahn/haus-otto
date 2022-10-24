@@ -1,0 +1,115 @@
+.footerWrapper {
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 2 * var(--margin-S));
+  background: white;
+  height: 31px;
+  border-top: 2px black solid;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px;
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+  z-index: 1000;
+}
+
+.footerHomeWrapper {
+  width: calc(100vw - 2 * var(--margin-S));
+  background: white;
+  height: 31px;
+  border-top: 2px black solid;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px;
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+}
+
+.footerTop {
+  position: fixed;
+  bottom: 31px;
+  width: 50%;
+  display: flex;
+  background: white;
+  padding-left: 7px;
+  padding-top: 3px;
+}
+
+.footerTop p {
+  line-height: 29.5px;
+  margin-bottom: 6px;
+}
+
+.footerTop h2 {
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+  padding-bottom: 8px;
+}
+
+.footerTopCol1 {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.footerTopCol2 {
+  width: 33.333%;
+  padding-right: 20px;
+}
+
+.footerTopCol3 {
+  width: 16.666%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+}
+
+.footerImprintButton {
+  position: fixed;
+  bottom: 31px;
+  height: 36px;
+  right: 12px;
+  z-index: 500;
+  padding-top: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.imprintWrapper {
+  position: fixed;
+  top: 35px;
+  right: 0;
+  background: white;
+  width: 66.666%;
+  z-index: 100;
+  padding: 4px;
+  overflow: scroll;
+  min-height: 100px;
+}
+
+.imprintWrapper p {
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+  padding-right: 8px;
+}
+
+.imprintTop {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.imprintTop p {
+  width: 25%;
+}
+
+@media screen and (max-width: 700px) {
+  .footerWrapper {
+    display: none;
+  }
+  .footerTop {
+    display: none;
+  }
+  .footerImprintButton {
+    display: none;
+  }
+}

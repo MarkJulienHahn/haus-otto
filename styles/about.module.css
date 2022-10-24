@@ -1,0 +1,98 @@
+.main {
+  padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
+}
+
+.aboutWrapper {
+  display: flex;
+  padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
+  margin-top: 50px;
+  width: 100%;
+}
+
+.aboutText {
+  width: 25%;
+  padding-bottom: 50px;
+}
+
+.aboutText p {
+  padding-bottom: 10px
+}
+
+.aboutSelectedPress {
+  width: 41.666%;
+}
+
+.aboutEntry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MBaboutWrapper {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    padding: 0;
+  }
+  .aboutWrapper {
+    display: none;
+  }
+  .MBaboutWrapper {
+    display: block;
+    padding: 8px;
+  }
+  .MBaboutText {
+    margin-top: 80px;
+  }
+  .MBaboutText h2 {
+    font-size: var(--XSfontSize);
+    margin: 30px 0;
+  }
+
+  .MBaboutText p {
+    padding-bottom: 15px
+  }
+
+  .MBaboutContact {
+    padding-bottom: 30px;
+  }
+  .MBaboutPress {
+    font-size: var(--XSfontSize);
+    line-height: var(--XSfontLineHeight);
+  }
+  .aboutEntry p {
+    font-size: var(--XSfontSize);
+    line-height: var(--XSfontLineHeight);
+  }
+  .aboutUpcomingShows h2 {
+    margin: 0 0 20px;
+  }
+  .aboutUpcomingShows h2:not(:first-child) {
+    margin-top: 20px;
+  }
+  .MBimprint h3 {
+    margin-top: 50px;
+  }
+
+  .imprintWrapper {
+    padding-bottom: 30px;
+  }
+
+  .imprintWrapper p {
+    font-size: var(--XSfontSize);
+    line-height: var(--XSfontLineHeight);
+  }
+  .footerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: var(--XSfontSize);
+    line-height: var(--XSfontLineHeight);
+    border-top: 2px solid black;
+    height: 31px
+  }
+  .imprintTop {
+    padding-bottom: 20px;
+  }
+}
