@@ -50,16 +50,18 @@ const Project = ({
   };
 
   const imageArray = images.map((image, i) => (
-    <Image
-      key={i}
-      src={image.url}
-      layout="fill"
-      objectFit="contain"
-      objectPosition="left top"
-      loading="eager"
-      onMouseEnter={() => setMouseLable(true)}
-      onMouseLeave={() => setMouseLable(false)}
-    />
+    <span key={i}>
+      <Image
+        key={i}
+        src={image.url}
+        layout="fill"
+        objectFit="contain"
+        objectPosition="left top"
+        loading="eager"
+        onMouseEnter={() => setMouseLable(true)}
+        onMouseLeave={() => setMouseLable(false)}
+      />
+    </span>
   ));
 
   console.log(images, imageArray);
