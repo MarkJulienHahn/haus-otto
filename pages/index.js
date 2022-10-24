@@ -30,7 +30,7 @@ export default function Home({ projects }) {
 
 export async function getStaticProps() {
   const projects = await client.fetch(`
-  *   [_type == "project"] | order(order asc) {..., "title": title, "description": description, "images": images[].asset->{url, "dimensions": metadata.dimensions}, photography, year, client, "presskit": presskit.asset->{url}, "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
+  *   [_type == "project"] |order(orderRank) {..., "title": title, "description": description, "images": images[].asset->{url, "dimensions": metadata.dimensions}, photography, year, client, "presskit": presskit.asset->{url}, "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
 }`);
   return {
     props: {
