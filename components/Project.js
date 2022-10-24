@@ -49,7 +49,20 @@ const Project = ({
     setShowIndex(false), setImgIndex(indx);
   };
 
-  const imageArray = images.map((image, i) => image.url);
+  const imageArray = images.map((image, i) => (
+    <Image
+      key={i}
+      src={image.url}
+      layout="fill"
+      objectFit="contain"
+      objectPosition="left top"
+      loading="eager"
+      onMouseEnter={() => setMouseLable(true)}
+      onMouseLeave={() => setMouseLable(false)}
+    />
+  ));
+
+  console.log(images, imageArray);
 
   return (
     <>
@@ -87,15 +100,7 @@ const Project = ({
               loopImages();
             }}
           >
-            <Image
-              src={imageArray[imgIndex]}
-              layout="fill"
-              objectFit="contain"
-              objectPosition="left top"
-              loading="eager"
-              onMouseEnter={() => setMouseLable(true)}
-              onMouseLeave={() => setMouseLable(false)}
-            />
+            {imageArray[imgIndex]}
           </div>
         )}
 

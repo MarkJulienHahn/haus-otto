@@ -1,23 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
-import { useSwiper } from "swiper/react";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "../styles/project.module.css";
 
-// import image01 from "../public/images/StairShelf_HausOtto_1.jpg";
-// import image02 from "../public/images/StairShelf_HausOtto_2.jpg";
-// import image03 from "../public/images/StairShelf_HausOtto_3.jpg";
-// import image04 from "../public/images/StairShelf_HausOtto_4.jpg";
-// import image05 from "../public/images/StairShelf_HausOtto_5.jpg";
-// import image06 from "../public/images/StairShelf_HausOtto_6.jpg";
-
-// const images = [image01, image02, image03, image04, image05, image06];
-
 const SwiperInner = ({
   active,
-  activeIndex,
   swiperINDX,
   setCurrentSlide,
   images,
@@ -33,8 +22,6 @@ const SwiperInner = ({
     (x) => setCurrentSlide(swiperRef.current.swiper.slideTo(x)),
     []
   );
-
-  // const images = [image01, image02, image03, image04, image05, image06];
 
   useEffect(() => {
     const swiperInstance = swiperRef.current.swiper;
@@ -54,7 +41,6 @@ const SwiperInner = ({
     updateSlide(swiperINDX);
   }, []);
 
-  console.log(images);
 
   return (
     <div
