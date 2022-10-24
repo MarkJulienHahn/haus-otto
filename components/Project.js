@@ -68,7 +68,7 @@ const Project = ({
 
   return (
     <>
-      {/* {mouseLable && (
+      {mouseLable && (
         <MouseElement imgIndex={imgIndex + 1} length={images.length} />
       )}
 
@@ -152,7 +152,7 @@ const Project = ({
             <h1>{year}</h1>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

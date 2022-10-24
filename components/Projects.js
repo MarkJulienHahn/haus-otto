@@ -12,6 +12,7 @@ const Projects = ({ projects }) => {
       <div className={styles.projectsWrapper}>
         {projects.map((project, i) => (
           <Project
+            key={i}
             setActiveIndex={setActiveIndex}
             activeIndex={activeIndex}
             title={project.title}
@@ -29,9 +30,9 @@ const Projects = ({ projects }) => {
       </div>
 
       <div className={styles.projectsMobileWrapper}>
-
         {projects.map((project, i) => (
           <ProjectMobile
+            key={i}
             setActiveIndex={setActiveIndex}
             activeIndex={activeIndex}
             title={project.title}
