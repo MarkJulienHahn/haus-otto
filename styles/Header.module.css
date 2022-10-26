@@ -118,7 +118,7 @@
 
   .headerWrapper {
     width: calc(100vw - var(--margin-S));
-    z-index: 200;
+    z-index: 100000;
   }
 
   .headerBottomWrapper {

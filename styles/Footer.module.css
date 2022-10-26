@@ -23,6 +23,7 @@
   padding: 6px;
   font-size: var(--XSfontSize);
   line-height: var(--XSfontLineHeight);
+
 }
 
 .footerTop {
@@ -111,5 +112,8 @@
   }
   .footerImprintButton {
     display: none;
+  }
+  .footerHomeWrapper {
+    margin-left: var(--margin-S);
   }
 }
