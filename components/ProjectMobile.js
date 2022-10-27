@@ -38,9 +38,14 @@ const ProjectMobile = ({
     });
   };
 
+
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
+
+  useEffect(() => {
+    setTimeout(scrollDown, 500)
+  })
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
@@ -61,7 +66,7 @@ const ProjectMobile = ({
       >
         <div
           className={styles.MBHeader}
-          onClick={active ? () => setActiveIndex(null) : () => {}}
+          onClick={active ? () => {setActiveIndex(null), setTimeout(scrollDown, 500)} : () => {}}
         >
           <div
             style={
