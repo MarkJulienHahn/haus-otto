@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "../styles/project.module.css";
 import { PortableText } from "@portabletext/react";
 
-const ProjectActive = ({ active, description, photography, presskit }) => {
+const ProjectActive = ({ active, description, photography, client, presskit }) => {
   const [height, setHeight] = useState("00px");
   const ref01 = useRef(null);
 
@@ -24,7 +24,7 @@ const ProjectActive = ({ active, description, photography, presskit }) => {
       >
         <div className={styles.projectInfo} ref={ref01}>
           <PortableText value={description} />
-          <p>Client: American Hard Wood Councel Europe</p>
+          <p>Client: {client}</p>
           <p>{photography && <>Photography: {photography}</>}</p>
 
           {presskit && (
