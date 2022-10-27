@@ -38,6 +38,13 @@ const ProjectMobile = ({
     });
   };
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: aboutSection.current.offsetTop + 1000,
+      behavior: "smooth",
+    });
+  };
+
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
@@ -66,7 +73,7 @@ const ProjectMobile = ({
       >
         <div
           className={styles.MBHeader}
-          onClick={active ? () => {setActiveIndex(null), setTimeout(scrollDown, 500)} : () => {}}
+          onClick={active ? () => {setActiveIndex(null), setTimeout(scrollUp, 500)} : () => {}}
         >
           <div
             style={
