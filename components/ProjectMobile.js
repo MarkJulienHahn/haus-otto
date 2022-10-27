@@ -50,9 +50,6 @@ const ProjectMobile = ({
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
 
-  useEffect(() => {
-    setTimeout(scrollDown, 500)
-  })
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
