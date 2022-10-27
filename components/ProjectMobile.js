@@ -69,8 +69,9 @@ const ProjectMobile = ({
                 ? {
                     background: "black",
                     color: "white",
-                    height: "40px",
+                    height: "36px",
                     padding: "0 8px",
+                    marginLeft: "4px",
                     transform: "translateX(-8px)",
                     display: "flex",
                     justifyContent: "center",
@@ -95,11 +96,11 @@ const ProjectMobile = ({
                   <div className={styles.MBArchiveColumn} key={i}>
                     <Image
                       src={image.url}
-                      layout="responsive"
-                      objectFit="contain"
+                      // layout="responsive"
+                      // objectFit="contain"
                       objectPosition="left top"
-                      width={"1000"}
-                      height={"1000"}
+                      width={image.dimensions.width}
+                      height={image.dimensions.height}
                       onClick={() => archiveAction(i+1)}
                     />
                   </div>

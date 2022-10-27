@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Arial, serif;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 23px;
   font-weight: bold;
 }
@@ -25,8 +25,8 @@ a {
   --margin-M: 30px;
   --margin-S: 8px;
 
-  --XSfontSize: 13px;
-  --XSfontLineHeight: 15px;
+  --XSfontSize: 11px;
+  --XSfontLineHeight: 14px;
 }
 
 ::-moz-selection {
@@ -43,8 +43,8 @@ a {
 h1,
 h2,
 p {
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: bold;
   margin: 0;
 }

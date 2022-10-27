@@ -64,8 +64,6 @@ const Project = ({
     </span>
   ));
 
-  console.log(images, imageArray);
-
   return (
     <>
       {mouseLable && (
@@ -78,12 +76,13 @@ const Project = ({
           active
             ? () => {}
             : () => {
-                setActiveIndex(index), setTimeout(scrollDown, 500);
+                setActiveIndex(index)
+                // , setTimeout(scrollDown, 500);
               }
         }
         ref={aboutSection}
       >
-        {!active && (
+        {activeIndex === null && (
           <div className={styles.projectOverlay}>
             <Image
               src={previewImage.url}

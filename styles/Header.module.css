@@ -19,7 +19,7 @@
 .headerTopWrapper {
   border-bottom: 2px solid black;
   height: 27px;
-  padding: 0 7px 4px 7px;
+  padding: 0 4px 4px 4px;
   display: flex;
   justify-content: space-between;
 }
@@ -27,7 +27,7 @@
 .headerAboutTopWrapper {
   border-bottom: 2px solid black;
   height: 27px;
-  padding: 0 7px 4px 7px;
+  padding: 0 4px 4px 4px;
   display: flex;
   justify-content: space-between;
   width: calc(100vw - 2 * var(--margin-S));
@@ -110,10 +110,7 @@
 @media screen and (max-width: 700px) {
   .headerTopWrapper {
     margin: 0 0 0 var(--margin-S);
-    padding: 0;
-  }
-
-  .headerBottomWrapper {
+    padding: 0 4px;
   }
 
   .headerWrapper {
@@ -122,7 +119,7 @@
   }
 
   .headerBottomWrapper {
-    padding: 4px 0 0 var(--margin-S);
+    padding: 4px 4px 0 12px;
   }
   .headerBottomLeft {
     width: 25%;

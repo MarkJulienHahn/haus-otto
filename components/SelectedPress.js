@@ -9,7 +9,7 @@ const SelectedPress = ({
   setHoverImgWidth,
   setHoverImgHeight,
 }) => {
-  console.log(width, height);
+
   return (
     <span
       onMouseEnter={() => {

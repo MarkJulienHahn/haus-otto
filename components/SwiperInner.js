@@ -51,7 +51,7 @@ const SwiperInner = ({
     >
       <Swiper className="swiper swiper-17-1" ref={swiperRef} loop={true}>
         {images.map((image, i) => (
-          <SwiperSlide key={i}>
+          <SwiperSlide key={i} style={{padding: "8px"}}>
             <Image
               src={image.url}
               layout="responsive"

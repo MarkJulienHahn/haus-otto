@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import styles from "../styles/project.module.css";
 
 import Project from "./Project";
 import ProjectMobile from "./ProjectMobile";
+import Footer from "./Footer";
 
 const Projects = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [refHeight, setRefHeight] = useState();
+  const [refMobileHeight, setRefMobileHeight] = useState();
+
+  const projectsRef = useRef();
+  const projectsMobileRef = useRef();
+
+  useEffect(() => {
+    setRefHeight(projectsRef.current?.clientHeight);
+    setRefMobileHeight(projectsMobileRef.current?.clientHeight);
+  }, []);
+
   return (
     <>
-      <div className={styles.projectsWrapper}>
+      <div
+        className={styles.projectsWrapper}
+        ref={projectsRef}
+        style={
+          activeIndex == null
+            ? { position: "absolute", top: `calc(100vh - ${refHeight + 66}px)` }
+            : { position: "absolute", top: `0px` }
+        }
+      >
         {projects.map((project, i) => (
           <Project
             key={i}
@@ -27,9 +47,21 @@ const Projects = ({ projects }) => {
             previewImage={project.previewImage}
           />
         ))}
+        <Footer />
       </div>
 
-      <div className={styles.projectsMobileWrapper}>
+      <div
+        className={styles.projectsMobileWrapper}
+        ref={projectsMobileRef}
+        style={
+          activeIndex == null
+            ? {
+                position: "absolute",
+                top: `calc(100vh - ${refMobileHeight}px)`,
+              }
+            : { position: "absolute", top: `60px` }
+        }
+      >
         {projects.map((project, i) => (
           <ProjectMobile
             key={i}
@@ -47,6 +79,7 @@ const Projects = ({ projects }) => {
             previewImage={project.previewImage}
           />
         ))}
+                <Footer />
       </div>
     </>
   );
