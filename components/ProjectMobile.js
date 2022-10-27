@@ -40,7 +40,7 @@ const ProjectMobile = ({
 
   const scrollUp = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 1000,
+      top: aboutSection.current.offsetTop + 1000,
       behavior: "smooth",
     });
   };
