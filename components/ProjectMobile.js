@@ -50,6 +50,7 @@ const ProjectMobile = ({
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
 
+  useEffect(() => scrollUp() )
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
