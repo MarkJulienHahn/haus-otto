@@ -1,16 +1,17 @@
 import styles from "../styles/Header.module.css";
 import Link from "next/link";
 
-const Header = ({header}) => {
+const Header = ({ header }) => {
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.headerTopWrapper}>
         <Link href={"/"}>
           <a>Haus Otto</a>
         </Link>
-        <h1>
-          <Link href={"/about"}><a>About</a></Link>
-        </h1>
+
+        <Link href={"/about"}>
+          <a>About</a>
+        </Link>
       </div>
       <div className={styles.headerBottomWrapper}>
         <h2>Work</h2>

@@ -52,12 +52,15 @@ const Project = ({
   const imageArray = images.map((image, i) => (
     <span key={i}>
       <Image
+        alt={title}
         key={i}
         src={image.url}
         layout="fill"
         objectFit="contain"
         objectPosition="left top"
-        loading="eager"
+        priority={i < 3 ? true : false}
+        height={image.dimensions.height}
+        width={image.dimensions.width}
         onMouseEnter={() => setMouseLable(true)}
         onMouseLeave={() => setMouseLable(false)}
       />
@@ -76,7 +79,7 @@ const Project = ({
           active
             ? () => {}
             : () => {
-                setActiveIndex(index)
+                setActiveIndex(index);
                 // , setTimeout(scrollDown, 500);
               }
         }
