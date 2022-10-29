@@ -5,6 +5,7 @@ import styles from "../styles/project.module.css";
 import Project from "./Project";
 import ProjectMobile from "./ProjectMobile";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const Projects = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -21,6 +22,7 @@ const Projects = ({ projects }) => {
 
   return (
     <>
+      <Header activeIndex={activeIndex}/>
       <div
         className={styles.projectsWrapper}
         ref={projectsRef}
@@ -79,7 +81,7 @@ const Projects = ({ projects }) => {
             previewImage={project.previewImage}
           />
         ))}
-                <Footer />
+        <Footer />
       </div>
     </>
   );

@@ -61,6 +61,7 @@ const About = ({ data }) => {
                   src={hoverImg}
                   width={hoverImgWidth}
                   height={hoverImgHeight}
+                  priority
                 />
               )}
             </div>

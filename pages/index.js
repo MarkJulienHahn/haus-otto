@@ -23,7 +23,7 @@ export default function Home({ projects }) {
       </Head>
 
       <main className={styles.main}>
-        <Header />
+
 
         <Projects projects={projects} />
       </main>

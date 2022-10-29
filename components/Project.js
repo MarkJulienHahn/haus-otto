@@ -67,6 +67,8 @@ const Project = ({
     </span>
   ));
 
+  console.log(activeIndex);
+
   return (
     <>
       {mouseLable && (
@@ -79,11 +81,11 @@ const Project = ({
           active
             ? () => {}
             : () => {
-                setActiveIndex(index);
-                // , setTimeout(scrollDown, 500);
+                setActiveIndex(index), setTimeout(scrollDown, 500);
               }
         }
         ref={aboutSection}
+        style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
       >
         {activeIndex === null && (
           <div className={styles.projectOverlay}>

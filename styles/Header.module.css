@@ -4,7 +4,7 @@
   top: 0;
   padding-top: var(--margin-S);
   background: white;
-  z-index: 50;
+  z-index: 150;
 }
 
 .headerAboutWrapper {
@@ -19,7 +19,7 @@
 .headerTopWrapper {
   border-bottom: 2px solid black;
   height: 27px;
-  padding: 0 4px 4px 4px;
+  padding: 0 6px 4px 6px;
   display: flex;
   justify-content: space-between;
 }
@@ -38,12 +38,12 @@
   display: flex;
   justify-content: space-between;
   height: 31px;
+  transition: border-bottom-width 0.2s linear;
 }
 
 .headerAboutBottomWrapper {
   padding: 4px 7px;
   display: flex;
-  justify-content: space-between;
   height: 31px;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .headerSelectedPress {
-  width: 41.666%;
+  width: calc(41.666% + 6px);
   padding-right: 20px;
   cursor: default;
 }
@@ -88,6 +88,7 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 12px;
+  width: calc(25% - 6px);
 }
 
 .headerAboutMid {
@@ -119,22 +120,23 @@
   }
 
   .headerBottomWrapper {
-    padding: 4px 4px 0 12px;
+    padding: 4px 4px 0 4px;
+    margin-left: 8px;
   }
   .headerBottomLeft {
     width: 25%;
   }
-  .headerBottomWrapperAbout {
+  .headerAboutBottomWrapper {
     display: none;
   }
   .headerAboutWrapper {
     display: none;
   }
-  .headerAboutTop p, .headerAboutMid p {
+  .headerAboutTop p,
+  .headerAboutMid p {
     font-size: var(--XSfontSize);
     line-height: var(--XSfontLineHeight);
     padding-bottom: 15px;
-    padding-top: 15px
+    padding-top: 15px;
   }
-  
 }

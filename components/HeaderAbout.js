@@ -13,12 +13,15 @@ const HeaderAbout = () => {
             <a>About</a>
           </Link>
         </div>
-        <div className={styles.headerBottomWrapperAbout}>
-          <h2>About</h2>
-          <h2>Selected Press</h2>
-          <div className={styles.headerAboutBottomLeft}>
+        <div className={styles.headerAboutBottomWrapper}>
+          <h2 className={styles.headerAboutHeader}>About</h2>
+          <div className={styles.headerSelectedPress}>
+            <h2>Selected Press</h2>
+          </div>
+
+          <div className={styles.headerAboutTop}>
             <h2>Upcoming Shows</h2>
-            {/* <h2>Year</h2> */}
+            <h2>Year</h2>
           </div>
         </div>
       </div>

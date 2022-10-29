@@ -45,12 +45,13 @@ const ProjectMobile = ({
     });
   };
 
-
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
 
-  useEffect(() => scrollUp() )
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
@@ -68,10 +69,17 @@ const ProjectMobile = ({
               }
         }
         ref={aboutSection}
+        style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
       >
         <div
           className={styles.MBHeader}
-          onClick={active ? () => {setActiveIndex(null), setTimeout(scrollUp, 500)} : () => {}}
+          onClick={
+            active
+              ? () => {
+                  setActiveIndex(null), setTimeout(scrollUp, 500);
+                }
+              : () => {}
+          }
         >
           <div
             style={
@@ -101,21 +109,19 @@ const ProjectMobile = ({
         <div className={styles.MBAccordion}>
           {active && showIndex ? (
             <div className={styles.MBArchiveWrapper}>
-              <div className={styles.MBArchiveColumn}>
-                {images.map((image, i) => (
-                  <div className={styles.MBArchiveColumn} key={i}>
-                    <Image
-                      src={image.url}
-                      // layout="responsive"
-                      // objectFit="contain"
-                      objectPosition="left top"
-                      width={image.dimensions.width}
-                      height={image.dimensions.height}
-                      onClick={() => archiveAction(i+1)}
-                    />
-                  </div>
-                ))}
-              </div>
+              {images.map((image, i) => (
+                <div className={styles.MBArchiveColumn} key={i}>
+                  <Image
+                    src={image.url}
+                    // layout="responsive"
+                    // objectFit="contain"
+                    objectPosition="left top"
+                    width={image.dimensions.width}
+                    height={image.dimensions.height}
+                    onClick={() => archiveAction(i + 1)}
+                  />
+                </div>
+              ))}
             </div>
           ) : (
             <SwiperInner
