@@ -33,7 +33,8 @@ const ProjectMobile = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 65.5,
+      top: aboutSection.current.offsetTop - 4.5,
+      left: 0,
       behavior: "smooth",
     });
   };
@@ -41,17 +42,19 @@ const ProjectMobile = ({
   const scrollUp = () => {
     window.scrollTo({
       top: aboutSection.current.offsetTop + 1000,
+      left: 0,
       behavior: "smooth",
     });
+  };
+
+  const open = async () => {
+    setActiveIndex(index), 
+    await setTimeout(scrollDown, 500);
   };
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
-
-  useEffect(() => {
-    scrollUp();
-  }, []);
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
@@ -65,7 +68,7 @@ const ProjectMobile = ({
           active
             ? () => {}
             : () => {
-                setActiveIndex(index), setTimeout(scrollDown, 500);
+                open();
               }
         }
         ref={aboutSection}
@@ -76,7 +79,7 @@ const ProjectMobile = ({
           onClick={
             active
               ? () => {
-                  setActiveIndex(null), setTimeout(scrollUp, 500);
+                  setActiveIndex(null);
                 }
               : () => {}
           }
@@ -113,8 +116,6 @@ const ProjectMobile = ({
                 <div className={styles.MBArchiveColumn} key={i}>
                   <Image
                     src={image.url}
-                    // layout="responsive"
-                    // objectFit="contain"
                     objectPosition="left top"
                     width={image.dimensions.width}
                     height={image.dimensions.height}
