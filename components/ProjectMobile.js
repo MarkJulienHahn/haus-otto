@@ -60,7 +60,7 @@ const ProjectMobile = ({
   }, [activeIndex]);
 
   useEffect(() => {
-    scrollUp();
+    setTimeout(scrollUp, 500);
   }, []);
 
   const archiveAction = (indx) => {

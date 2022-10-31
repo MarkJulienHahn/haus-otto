@@ -67,8 +67,6 @@ const Project = ({
     </span>
   ));
 
-  console.log(activeIndex);
-
   return (
     <>
       {mouseLable && (

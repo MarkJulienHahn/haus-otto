@@ -6,9 +6,6 @@ import { PortableText } from "@portabletext/react";
 
 const FooterAbout = ({data}) => {
   const [showImprint, setShowImprint] = useState(false);
-
-  console.log
-
   return (
     <>
       {showImprint && (
