@@ -28,6 +28,10 @@
   transition: height 0.5s ease;
 }
 
+.MBprojectActiveWrapper {
+  transition: height 200 ease;
+}
+
 .projectInfo {
   padding: 30px 7px 30px;
 }

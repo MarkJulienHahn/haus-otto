@@ -115,5 +115,6 @@
   }
   .footerHomeWrapper {
     margin-left: var(--margin-S);
+    padding: 6px 4px
   }
 }

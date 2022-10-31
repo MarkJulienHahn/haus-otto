@@ -60,6 +60,7 @@ const SwiperInner = ({
               width="100"
               objectPosition="left top"
               loading="eager"
+              priority={i<5 ? "true" : "false"}
             />
           </SwiperSlide>
         ))}

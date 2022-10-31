@@ -2,7 +2,6 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 
 const Header = ({ activeIndex }) => {
-  console.log(activeIndex)
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.headerTopWrapper}>

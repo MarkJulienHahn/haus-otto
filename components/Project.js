@@ -119,6 +119,7 @@ const Project = ({
                   width={image.dimensions.width}
                   height={image.dimensions.height}
                   onClick={() => showImage(i)}
+                  priority={i<5 ? "true" : "false"}
                 />
               </div>
             ))}

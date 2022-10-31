@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import ProjectActive from "./ProjectActive";
+import ProjectActiveMobile from "./ProjectActiveMobile";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import SwiperInner from "./SwiperInner";
@@ -33,11 +33,15 @@ const ProjectMobile = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 4,
+      top: aboutSection.current.offsetTop - 4.5,
       left: 0,
       behavior: "smooth",
     });
   };
+
+  // const scrollDown = () => {
+  //   aboutSection.current.scrollIntoView() + 40
+  // };
 
   const scrollUp = () => {
     window.scrollTo({
@@ -47,8 +51,9 @@ const ProjectMobile = ({
     });
   };
 
+
   const open = async () => {
-    setActiveIndex(index), await setTimeout(scrollDown, 600);
+    setActiveIndex(index), setTimeout(scrollDown, 200);
   };
 
   const close = async () => {
@@ -68,7 +73,7 @@ const ProjectMobile = ({
   };
 
   return (
-    <>
+    <d>
       <div
         className={styles.MBprojectSingleWrapper}
         onClick={
@@ -78,9 +83,10 @@ const ProjectMobile = ({
                 open();
               }
         }
-        ref={aboutSection}
+
         style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
         id={index}
+        ref={aboutSection}
       >
         <div
           className={styles.MBHeader}
@@ -128,6 +134,7 @@ const ProjectMobile = ({
                     width={image.dimensions.width}
                     height={image.dimensions.height}
                     onClick={() => archiveAction(i + 1)}
+                    priority={i<5 ? "true" : "false"}
                   />
                 </div>
               ))}
@@ -151,7 +158,7 @@ const ProjectMobile = ({
           ) : (
             ""
           )}
-          <ProjectActive
+          <ProjectActiveMobile
             description={description}
             client={client}
             photography={photography}
@@ -160,7 +167,7 @@ const ProjectMobile = ({
           />
         </div>
       </div>
-    </>
+    </d>
   );
 };
 
