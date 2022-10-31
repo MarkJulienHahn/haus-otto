@@ -33,7 +33,7 @@ const ProjectMobile = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 4.5,
+      top: aboutSection.current.offsetTop - 4,
       left: 0,
       behavior: "smooth",
     });
