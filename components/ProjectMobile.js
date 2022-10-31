@@ -33,7 +33,7 @@ const ProjectMobile = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 4.5,
+      top: aboutSection.current.offsetTop - 4,
       left: 0,
       behavior: "smooth",
     });
@@ -41,20 +41,27 @@ const ProjectMobile = ({
 
   const scrollUp = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop + 1000,
+      top: 9999,
       left: 0,
       behavior: "smooth",
     });
   };
 
   const open = async () => {
-    setActiveIndex(index), 
-    await setTimeout(scrollDown, 500);
+    setActiveIndex(index), await setTimeout(scrollDown, 500);
+  };
+
+  const close = async () => {
+    setActiveIndex(null), await setTimeout(scrollUp, 500);
   };
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
   }, [activeIndex]);
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   const archiveAction = (indx) => {
     setSwiperINDX(indx), setShowIndex(false);
@@ -73,13 +80,14 @@ const ProjectMobile = ({
         }
         ref={aboutSection}
         style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
+        id={index}
       >
         <div
           className={styles.MBHeader}
           onClick={
             active
               ? () => {
-                  setActiveIndex(null);
+                  close();
                 }
               : () => {}
           }

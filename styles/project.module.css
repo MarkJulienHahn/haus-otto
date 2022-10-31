@@ -153,6 +153,7 @@
 .MBprojectSingleWrapper {
   border-top: 2px solid black;
   margin: var(--margin-S);
+  scroll-behavior: smooth;
 }
 
 .MBHeader {
@@ -208,7 +209,7 @@
 }
 
 .MBArchiveColumn {
-  width: calc(25vw);
+  width: calc(25vw - 2px);
   padding: 0px 10px 4px 0px;
 }
 
