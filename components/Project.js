@@ -116,10 +116,12 @@ const Project = ({
                   src={image.url}
                   layout="responsive"
                   objectFit="contain"
-                  width={image.dimensions.width}
-                  height={image.dimensions.height}
+                  width={image.dimensions.width/2}
+                  height={image.dimensions.height/2}
                   onClick={() => showImage(i)}
-                  priority={i<5 ? "true" : "false"}
+                  priority={i<4 ? "true" : "false"}
+                  sizes="320 640 750 1200 2000 3000"
+                  quality={1}
                 />
               </div>
             ))}
