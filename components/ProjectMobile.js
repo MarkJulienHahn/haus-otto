@@ -48,7 +48,7 @@ const ProjectMobile = ({
   };
 
   const open = async () => {
-    setActiveIndex(index), await setTimeout(scrollDown, 500);
+    setActiveIndex(index), await setTimeout(scrollDown, 600);
   };
 
   const close = async () => {
