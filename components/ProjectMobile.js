@@ -135,6 +135,8 @@ const ProjectMobile = ({
                     height={image.dimensions.height}
                     onClick={() => archiveAction(i + 1)}
                     priority={i<5 ? "true" : "false"}
+                    placeholder="blur"
+                    blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
                   />
                 </div>
               ))}

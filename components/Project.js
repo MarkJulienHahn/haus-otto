@@ -50,7 +50,7 @@ const Project = ({
   };
 
   const imageArray = images.map((image, i) => (
-    <span key={i}>
+    <span key={i} style={i == imgIndex ? {opacity: "1"} : {opacity: "0"}}>
       <Image
         alt={title}
         key={i}
@@ -61,8 +61,6 @@ const Project = ({
         priority={i < 3 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
-        // placeholder="blur"
-        // blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
         onMouseEnter={() => setMouseLable(true)}
         onMouseLeave={() => setMouseLable(false)}
       />
@@ -106,7 +104,8 @@ const Project = ({
               loopImages();
             }}
           >
-            {imageArray[imgIndex]}
+            {imageArray.map((image) => image)}
+            {/* {imageArray[imgIndex]} */}
           </div>
         )}
 
