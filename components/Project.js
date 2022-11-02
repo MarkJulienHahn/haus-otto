@@ -61,6 +61,8 @@ const Project = ({
         priority={i < 3 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
+        // placeholder="blur"
+        // blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
         onMouseEnter={() => setMouseLable(true)}
         onMouseLeave={() => setMouseLable(false)}
       />
@@ -116,12 +118,13 @@ const Project = ({
                   src={image.url}
                   layout="responsive"
                   objectFit="contain"
-                  width={image.dimensions.width/2}
-                  height={image.dimensions.height/2}
                   onClick={() => showImage(i)}
                   priority={i<4 ? "true" : "false"}
-                  sizes="320 640 750 1200 2000 3000"
+                  height={image.dimensions.height}
+                  width={image.dimensions.width}
                   quality={1}
+                  placeholder="blur"
+                  blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
                 />
               </div>
             ))}
