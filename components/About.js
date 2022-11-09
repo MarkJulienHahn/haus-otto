@@ -143,90 +143,99 @@ const About = ({ data }) => {
       <div className={styles.MBaboutWrapper}>
         <div className={styles.MBaboutText}>
           <PortableText value={data.about} />
+
+          <div className={styles.MBaboutPortrait}>
+            <Image
+              src={data.portrait.url}
+              width={data.portrait.dimensions.width}
+              height={data.portrait.dimensions.height}
+              objectFit="contain"
+            />
+          </div>
           <h2>Contact</h2>
           <div className={styles.MBaboutContact}>
             <PortableText value={data.contact} />
           </div>
-        </div>  
-          <div className={styles.MBaboutPress}>
-            <div className={styles2.headerAboutTop}>
-              <p>Upcoming Shows</p>
-            </div>
-            <div className={styles.aboutUpcomingShows}>
-              {data.upcomingShows.map((show, i) => (
-                <div className={styles.aboutEntry} key={i}>
-                  <p>{show.title}</p>
-                  <p>{show.year}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles2.headerAboutMid}>
-              <p>Past Shows</p>
-            </div>
-            <div className={styles.aboutUpcomingShows}>
-              {data.pastShows.map((show, i) => (
-                <div className={styles.aboutEntry} key={i}>
-                  <p>{show.title}</p>
-                  <p>{show.year}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles2.headerAboutMid}>
-              <p>Awards</p>
-            </div>
-            <div className={styles.aboutPastShows}>
-              {data.awards.map((show, i) => (
-                <div className={styles.aboutEntry} key={i}>
-                  <p>{show.title}</p>
-                  <p>{show.year}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles2.headerAboutMid}>
-              <p>Part Of</p>
-            </div>
-            <div className={styles.aboutPastShows}>
-              {data.partOf.map((show, i) => (
-                <div className={styles.aboutEntry} key={i}>
-                  <p>{show.title}</p>
-                  <p>{show.year}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles2.headerAboutMid}>
-              <p>Workshops, Lectures and Events</p>
-            </div>
-            <div className={styles.aboutPastShows}>
-              {data.workshops.map((show, i) => (
-                <div className={styles.aboutEntry} key={i}>
-                  <p>{show.title}</p>
-                  <p>{show.year}</p>
-                </div>
-              ))}
-            </div>
+        </div>
+        <div className={styles.MBaboutPress}>
+          <div className={styles2.headerAboutTop}>
+            <p>Upcoming Shows</p>
           </div>
-          <div className={styles.MBimprint}>
-            <h3 onClick={() => setImprintActive(!imprintActive)}>Imprint</h3>
-
-            {imprintActive && (
-              <div className={styles.imprintWrapper}>
-                <div className={styles.imprintTop}>
-                  <PortableText value={data.kontaktNils} />
-                </div>
-                <div className={styles.imprintTop}>
-                  <PortableText value={data.kontaktPatrick} />
-                </div>
-                <div className={styles.imprintTop}>
-                  <p>©{new Date().getFullYear()}</p>
-                </div>
-                <PortableText value={data.imprint} />
+          <div className={styles.aboutUpcomingShows}>
+            {data.upcomingShows.map((show, i) => (
+              <div className={styles.aboutEntry} key={i}>
+                <p>{show.title}</p>
+                <p>{show.year}</p>
               </div>
-            )}
+            ))}
           </div>
+
+          <div className={styles2.headerAboutMid}>
+            <p>Past Shows</p>
+          </div>
+          <div className={styles.aboutUpcomingShows}>
+            {data.pastShows.map((show, i) => (
+              <div className={styles.aboutEntry} key={i}>
+                <p>{show.title}</p>
+                <p>{show.year}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles2.headerAboutMid}>
+            <p>Awards</p>
+          </div>
+          <div className={styles.aboutPastShows}>
+            {data.awards.map((show, i) => (
+              <div className={styles.aboutEntry} key={i}>
+                <p>{show.title}</p>
+                <p>{show.year}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles2.headerAboutMid}>
+            <p>Part Of</p>
+          </div>
+          <div className={styles.aboutPastShows}>
+            {data.partOf.map((show, i) => (
+              <div className={styles.aboutEntry} key={i}>
+                <p>{show.title}</p>
+                <p>{show.year}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles2.headerAboutMid}>
+            <p>Workshops, Lectures and Events</p>
+          </div>
+          <div className={styles.aboutPastShows}>
+            {data.workshops.map((show, i) => (
+              <div className={styles.aboutEntry} key={i}>
+                <p>{show.title}</p>
+                <p>{show.year}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={styles.MBimprint}>
+          <h3 onClick={() => setImprintActive(!imprintActive)}>Imprint</h3>
+
+          {imprintActive && (
+            <div className={styles.imprintWrapper}>
+              <div className={styles.imprintTop}>
+                <PortableText value={data.kontaktNils} />
+              </div>
+              <div className={styles.imprintTop}>
+                <PortableText value={data.kontaktPatrick} />
+              </div>
+              <div className={styles.imprintTop}>
+                <p>©{new Date().getFullYear()}</p>
+              </div>
+              <PortableText value={data.imprint} />
+            </div>
+          )}
+        </div>
 
         <div className={styles.footerWrapper}>©Haus Otto GmbH 2022</div>
       </div>

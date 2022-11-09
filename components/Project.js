@@ -50,7 +50,7 @@ const Project = ({
   };
 
   const imageArray = images.map((image, i) => (
-    <span key={i} style={i == imgIndex ? {opacity: "1"} : {opacity: "0"}}>
+    <span key={i} style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}>
       <Image
         alt={title}
         key={i}
@@ -105,7 +105,6 @@ const Project = ({
             }}
           >
             {imageArray.map((image) => image)}
-            {/* {imageArray[imgIndex]} */}
           </div>
         )}
 
@@ -118,7 +117,7 @@ const Project = ({
                   layout="responsive"
                   objectFit="contain"
                   onClick={() => showImage(i)}
-                  priority={i<4 ? "true" : "false"}
+                  priority={i < 4 ? "true" : "false"}
                   height={image.dimensions.height}
                   width={image.dimensions.width}
                   quality={1}

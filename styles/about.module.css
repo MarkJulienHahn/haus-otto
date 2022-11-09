@@ -56,10 +56,20 @@
 
   .MBaboutContact {
     padding-bottom: 30px;
+    width: calc(100% - 140px)
   }
   .MBaboutPress {
     font-size: var(--XSfontSize);
     line-height: var(--XSfontLineHeight);
+  }
+
+  .MBaboutPortrait {
+    position: absolute;
+    right: 30px;
+    width: 120px;
+    height: 100px;
+    padding-top: 20px;
+    /* background: red; */
   }
   .aboutEntry p {
     font-size: var(--XSfontSize);

@@ -7,7 +7,7 @@ import ProjectMobile from "./ProjectMobile";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, data }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [refHeight, setRefHeight] = useState();
   const [refMobileHeight, setRefMobileHeight] = useState();
@@ -22,7 +22,7 @@ const Projects = ({ projects }) => {
 
   return (
     <>
-      <Header activeIndex={activeIndex}/>
+      <Header activeIndex={activeIndex} data={data} />
       <div
         className={styles.projectsWrapper}
         ref={projectsRef}

@@ -9,8 +9,7 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import Projects from "../components/Projects";
 
-export default function Home({ projects }) {
-
+export default function Home({ projects, data }) {
   return (
     <div>
       <Head>
@@ -23,9 +22,7 @@ export default function Home({ projects }) {
       </Head>
 
       <main className={styles.main}>
-
-
-        <Projects projects={projects} />
+        <Projects projects={projects} data={data[0]} />
       </main>
     </div>
   );
@@ -35,9 +32,12 @@ export async function getStaticProps() {
   const projects = await client.fetch(`
   *   [_type == "project"] |order(orderRank) {..., "title": title, "description": description, "images": images[].asset->{url, "dimensions": metadata.dimensions}, photography, year, client, "presskit": presskit.asset->{url}, "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
 }`);
+  const data = await client.fetch(`
+*      [_type == "about"]{"portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}}`);
   return {
     props: {
       projects,
+      data,
     },
     revalidate: 10,
   };
