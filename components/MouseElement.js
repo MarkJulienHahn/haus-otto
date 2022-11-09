@@ -25,7 +25,7 @@ const MouseElement = ( {imgIndex, length}) => {
     pointerEvents: "none"
   };
 
-  return <div style={mouseElement}>{`${imgIndex} / ${length}`}</div>;
+  return <div style={mouseElement}>{imgIndex}&thinsp;/&thinsp;{length}</div>;
 };
 
 export default MouseElement;
