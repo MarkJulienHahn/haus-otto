@@ -40,7 +40,7 @@ const FooterAbout = ({data}) => {
         </div>
       </div>
       <div className={styles.footerImprintButton} onClick={() => setShowImprint(!showImprint)}>Imprint</div>
-      <div className={styles.footerWrapper}>© Haus Otto GmbH {new Date().getFullYear()}</div>
+      <div className={styles.footerWrapper}>© Haus Otto {new Date().getFullYear()}</div>
     </>
   );
 };

@@ -18,9 +18,9 @@ const About = ({ data }) => {
 
   const selected = data.selectedPress.map((entry, i) => ({
     lable: entry.title,
-    image: entry.image.url,
-    width: entry.image.dimensions.width,
-    height: entry.image.dimensions.height,
+    image: entry.image?.url,
+    width: entry.image?.dimensions.width,
+    height: entry.image?.dimensions.height,
   }));
 
   return (
@@ -237,7 +237,7 @@ const About = ({ data }) => {
           )}
         </div>
 
-        <div className={styles.footerWrapper}>©Haus Otto GmbH 2022</div>
+        <div className={styles.footerWrapper}>©Haus Otto {new Date().getFullYear()}</div>
       </div>
     </>
   );
