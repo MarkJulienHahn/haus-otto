@@ -17,7 +17,7 @@ const SelectedPress = ({
       }}
       onMouseLeave={() => setHoverImg(null)}
     >
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" rel="noreferrer">
         {lable}
       </a>
     </span>
