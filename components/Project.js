@@ -73,7 +73,7 @@ const Project = ({
         layout="fill"
         objectFit="contain"
         objectPosition="left top"
-        // priority={i < 3 ? true : false}
+        priority={i < 1 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
         onClick={() => {
