@@ -76,6 +76,8 @@ const Project = ({
         priority={i < 1 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
+        placeholder="blur"
+        blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
         onClick={() => {
           loopImages();
         }}
@@ -145,31 +147,28 @@ const Project = ({
           </div>
         )}
 
-        <div
-          className={styles.archiveOuter}
-          style={
-            active && showIndex ? { display: "block" } : { display: "none" }
-          }
-        >
-          <div className={styles.archiveWrapper}>
-            {images.map((image, i) => (
-              <div className={styles.archiveColumn} key={i}>
-                <Image
-                  src={image.url}
-                  layout="responsive"
-                  objectFit="contain"
-                  onClick={() => showImage(i)}
-                  // priority={i < 4 ? "true" : "false"}
-                  height={image.dimensions.height / 10}
-                  width={image.dimensions.width / 10}
-                  quality={1}
-                  placeholder="blur"
-                  blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
-                />
-              </div>
-            ))}
+        {active && showIndex && (
+          <div className={styles.archiveOuter}>
+            <div className={styles.archiveWrapper}>
+              {images.map((image, i) => (
+                <div className={styles.archiveColumn} key={i}>
+                  <Image
+                    src={image.url}
+                    layout="responsive"
+                    objectFit="contain"
+                    onClick={() => showImage(i)}
+                    // priority={i < 4 ? "true" : "false"}
+                    height={image.dimensions.height / 10}
+                    width={image.dimensions.width / 10}
+                    quality={1}
+                    placeholder="blur"
+                    blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className={styles.projectColumnRight}>
           <div className={styles.projectHeaderRight}>
