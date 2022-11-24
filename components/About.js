@@ -18,6 +18,7 @@ const About = ({ data }) => {
 
   const selected = data.selectedPress.map((entry, i) => ({
     lable: entry.title,
+    link: entry.link,
     image: entry.image?.url,
     width: entry.image?.dimensions.width,
     height: entry.image?.dimensions.height,
@@ -44,6 +45,7 @@ const About = ({ data }) => {
                 <span key={i}>
                   <SelectedPress
                     lable={press.lable}
+                    link={press.link}
                     img={press.image}
                     width={press.width}
                     height={press.height}

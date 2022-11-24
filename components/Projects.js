@@ -22,13 +22,13 @@ const Projects = ({ projects, data }) => {
 
   return (
     <>
-      <Header activeIndex={activeIndex} data={data} />
+      <Header activeIndex={activeIndex} setActiveIndex={setActiveIndex} data={data} />
       <div
         className={styles.projectsWrapper}
         ref={projectsRef}
         style={
           activeIndex == null
-            ? { position: "absolute", top: `calc(100vh - ${refHeight + 66}px)` }
+            ? { position: "absolute", top: `calc(100vh - ${refHeight + 39}px)` }
             : { position: "absolute", top: `0px` }
         }
       >

@@ -33,7 +33,7 @@ const ProjectMobile = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 4,
+      top: aboutSection.current.offsetTop + 21,
       left: 0,
       behavior: "smooth",
     });
@@ -73,7 +73,7 @@ const ProjectMobile = ({
   };
 
   return (
-    <d>
+    <div>
       <div
         className={styles.MBprojectSingleWrapper}
         onClick={
@@ -134,7 +134,7 @@ const ProjectMobile = ({
                     width={image.dimensions.width}
                     height={image.dimensions.height}
                     onClick={() => archiveAction(i + 1)}
-                    priority={i<5 ? "true" : "false"}
+                    // priority={i<5 ? "true" : "false"}
                     placeholder="blur"
                     blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
                   />
@@ -169,7 +169,7 @@ const ProjectMobile = ({
           />
         </div>
       </div>
-    </d>
+    </div>
   );
 };
 

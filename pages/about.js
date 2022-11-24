@@ -30,7 +30,7 @@ export default about;
 
 export async function getStaticProps() {
   const data = await client.fetch(`
-  *    [_type == "about"]{..., "selectedPress": selectedPress[]{title, "image": hoverImage.asset->{url, "dimensions": metadata.dimensions}}, "portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}}`);
+  *    [_type == "about"]{..., "selectedPress": selectedPress[]{title, link, "image": hoverImage.asset->{url, "dimensions": metadata.dimensions}}, "portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}}`);
   return {
     props: {
       data,

@@ -5,7 +5,7 @@ body {
   font-family: Arial, serif;
   font-size: 16px;
   line-height: 23px;
-  font-weight: bold;
+  font-weight: normal;
   scroll-behavior: smooth;
 }
 
@@ -28,6 +28,8 @@ a {
 
   --XSfontSize: 11px;
   --XSfontLineHeight: 14px;
+
+  --border: 1.5px solid black;
 }
 
 ::-moz-selection {
@@ -46,8 +48,12 @@ h2,
 p {
   font-size: 16px;
   line-height: 20px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
+}
+
+p a {
+  border-bottom: var(--border)
 }
 
 @media screen and (max-width: 700px) {
@@ -59,5 +65,7 @@ p {
   
     --XSfontSize: 12px;
     --XSfontLineHeight: 14px;
+
+    --border: 1.5px solid black;
   }
 }

@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const Header = ({ activeIndex, data }) => {
+const Header = ({ activeIndex, setActiveIndex, data }) => {
   const [portrait, showPortrait] = useState(false);
 
   return (
@@ -23,11 +23,17 @@ const Header = ({ activeIndex, data }) => {
         </div>
       )}
 
-      <div className={styles.headerWrapper}>
-        <div className={styles.headerTopWrapper}>
-          <Link href={"/"}>
-            <a>Haus Otto</a>
-          </Link>
+      <div
+        className={styles.headerWrapper}
+        style={activeIndex != null ? { borderBottom: "var(--border)" } : {}}
+      >
+        <div className={styles.headerLeftWrapper}>
+          <div
+            className={styles.headerPageIndex}
+            onClick={() => setActiveIndex(null)}
+          >
+            <div style={{ cursor: "pointer" }}>Haus Otto</div>
+          </div>
           <div
             onMouseEnter={() => showPortrait(true)}
             onMouseLeave={() => showPortrait(false)}
@@ -37,15 +43,12 @@ const Header = ({ activeIndex, data }) => {
             </Link>
           </div>
         </div>
-        <div
-          className={styles.headerBottomWrapper}
-          style={activeIndex != null ? { borderBottom: "2px solid black" } : {}}
-        >
-          <h2>Work</h2>
-          <div className={styles.headerBottomLeft}>
-            <h2>Case</h2>
-            <h2>Year</h2>
-          </div>
+
+        <div className={styles.headerRightWrapper}>
+          <h2>Case</h2>
+
+          <h2>Year</h2>
+          <h2>Presskit</h2>
         </div>
       </div>
     </>

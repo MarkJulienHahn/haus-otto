@@ -30,7 +30,7 @@ const Project = ({
 
   const scrollDown = () => {
     window.scrollTo({
-      top: aboutSection.current.offsetTop - 65.5,
+      top: aboutSection.current.offsetTop,
       behavior: "smooth",
     });
   };
@@ -45,12 +45,27 @@ const Project = ({
     } else setImgIndex(0);
   };
 
+  const loopImagesBack = () => {
+    if (imgIndex > 0) {
+      setImgIndex(imgIndex - 1);
+    } else setImgIndex(images.length - 1);
+  };
+
   const showImage = (indx) => {
     setShowIndex(false), setImgIndex(indx);
   };
 
   const imageArray = images.map((image, i) => (
-    <span key={i} style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}>
+    <span
+      key={i}
+      style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}
+      onMouseEnter={() => setMouseLable(true)}
+      onMouseLeave={() => setMouseLable(false)}
+    >
+      <div
+        className={styles.sliderLeftbutton}
+        onClick={() => loopImagesBack()}
+      ></div>
       <Image
         alt={title}
         key={i}
@@ -58,11 +73,12 @@ const Project = ({
         layout="fill"
         objectFit="contain"
         objectPosition="left top"
-        priority={i < 3 ? true : false}
+        // priority={i < 3 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
-        onMouseEnter={() => setMouseLable(true)}
-        onMouseLeave={() => setMouseLable(false)}
+        onClick={() => {
+          loopImages();
+        }}
       />
     </span>
   ));
@@ -83,7 +99,7 @@ const Project = ({
               }
         }
         ref={aboutSection}
-        style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
+        // style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
       >
         {activeIndex === null && (
           <div className={styles.projectOverlay}>
@@ -92,40 +108,8 @@ const Project = ({
               layout="fill"
               objectFit="contain"
               loading="eager"
-              priority="true"
+              // priority="true"
             />
-          </div>
-        )}
-
-        {active && !showIndex && (
-          <div
-            className={styles.slider}
-            onClick={() => {
-              loopImages();
-            }}
-          >
-            {imageArray.map((image) => image)}
-          </div>
-        )}
-
-        {active && showIndex && (
-          <div className={styles.archiveWrapper}>
-            {images.map((image, i) => (
-              <div className={styles.archiveColumn} key={i}>
-                <Image
-                  src={image.url}
-                  layout="responsive"
-                  objectFit="contain"
-                  onClick={() => showImage(i)}
-                  priority={i < 4 ? "true" : "false"}
-                  height={image.dimensions.height}
-                  width={image.dimensions.width}
-                  quality={1}
-                  placeholder="blur"
-                  blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
-                />
-              </div>
-            ))}
           </div>
         )}
 
@@ -152,10 +136,49 @@ const Project = ({
             active={active}
           />
         </div>
+
+        {active && !showIndex && (
+          <div className={styles.sliderOuter}>
+            <div className={styles.slider}>
+              {imageArray.map((image) => image)}
+            </div>
+          </div>
+        )}
+
+        <div
+          className={styles.archiveOuter}
+          style={
+            active && showIndex ? { display: "block" } : { display: "none" }
+          }
+        >
+          <div className={styles.archiveWrapper}>
+            {images.map((image, i) => (
+              <div className={styles.archiveColumn} key={i}>
+                <Image
+                  src={image.url}
+                  layout="responsive"
+                  objectFit="contain"
+                  onClick={() => showImage(i)}
+                  // priority={i < 4 ? "true" : "false"}
+                  height={image.dimensions.height / 10}
+                  width={image.dimensions.width / 10}
+                  quality={1}
+                  placeholder="blur"
+                  blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className={styles.projectColumnRight}>
           <div className={styles.projectHeaderRight}>
             <h1>{category}</h1>
             <h1>{year}</h1>
+
+            <h2 className={styles.downloadButton}>
+              <a href={presskit}>Download</a>
+            </h2>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const HeaderAbout = ( data ) => {
+const HeaderAbout = (data) => {
   const [portrait, showPortrait] = useState(false);
 
   return (
@@ -12,9 +12,9 @@ const HeaderAbout = ( data ) => {
       {portrait && (
         <div className={styles.portraitOverlay}>
           <Image
-            src={data.data.portrait.url}
-            width={data.data.portrait.dimensions.width}
-            height={data.data.portrait.dimensions.height}
+            src={data.portrait?.url}
+            width={data.portrait?.dimensions.width}
+            height={data.portrait?.dimensions.height}
             layout="fill"
             objectFit="contain"
             loading="eager"
@@ -22,30 +22,17 @@ const HeaderAbout = ( data ) => {
           />
         </div>
       )}
-    
+
       <div className={styles.headerWrapper}>
-        <div className={styles.headerTopWrapper}>
+        <div className={styles.headerLeftWrapper}>
           <Link href={"/"}>
-            <a>Haus Otto</a>
+            <div style={{ cursor: "pointer" }}>Haus Otto</div>
           </Link>
           <div
             onMouseEnter={() => showPortrait(true)}
             onMouseLeave={() => showPortrait(false)}
           >
-            <Link href={"/about"}>
-              <a>About</a>
-            </Link>
-          </div>
-        </div>
-        <div className={styles.headerAboutBottomWrapper}>
-          <h2 className={styles.headerAboutHeader}>About</h2>
-          <div className={styles.headerSelectedPress}>
-            <h2>Selected Press</h2>
-          </div>
-
-          <div className={styles.headerAboutTop}>
-            <h2>Upcoming Shows</h2>
-            <h2>Year</h2>
+            <a className={styles.headerPageIndex}>About</a>
           </div>
         </div>
       </div>

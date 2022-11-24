@@ -1,6 +1,6 @@
 .projectsWrapper {
   width: calc(100vw - 16px);
-  margin-top: 66px;
+  margin-top: 39px;
   background: white;
   cursor: default;
   transition: top ease 0.5s;
@@ -14,7 +14,7 @@
 }
 
 .projectSingleWrapper {
-  border-top: 2px solid black;
+  border-top: var(--border);
   display: flex;
   justify-content: space-between;
 }
@@ -59,8 +59,19 @@
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 66px;
+  top: 40px;
   right: 0;
+}
+
+.projectHeaderRight h1:first-child {
+  width: calc(48% - 14px);
+}
+.projectHeaderRight h1:nth-child(2) {
+  width: 32%;
+}
+.projectHeaderRight h1:nth-child(3) {
+  width: 30%;
+  text-align: right;
 }
 
 .projectHeader h1 {
@@ -73,7 +84,7 @@
 
 .projectHeader h2 {
   height: 31px;
-  padding: 10px;
+  padding: 5px;
   margin-right: 4px;
   background: white;
   display: flex;
@@ -87,21 +98,32 @@
 }
 
 .projectColumnRight {
-  width: 16.666vw;
+  width: 20vw;
 }
 
 .projectHeaderRight {
   padding: 5px 4px 4px 0;
   display: flex;
-  justify-content: space-between;
   position: sticky;
-  top: 66px;
+  top: 39px;
   right: 0;
+}
+
+.sliderLeftbutton {
+  position: absolute;
+  width: 250px;
+  height: 90vh;
+  z-index: 101;
+}
+
+.sliderOuter {
+  width: 55vw;
+  height: 80vh;
 }
 
 .slider {
   position: fixed;
-  top: 67px;
+  top: 42px;
   left: calc(25% + 12px);
   height: calc(100vh - 130px);
   width: calc(75% - 20px);
@@ -125,29 +147,38 @@
   z-index: 1000;
 }
 
+.archiveOuter {
+  width: 55vw;
+}
+
 .archiveWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  position: fixed;
+  width: 20vw;
   flex-wrap: wrap;
   top: 67px;
   left: calc(25% + 12px);
   z-index: 100;
-  height: 80%;
-  transform: translateY(-1px);
+  height: 80vh;
+  padding-left: 9px;
 }
 
 .archiveColumn {
   width: 8.333vw;
-  margin: 0 10px 20px 0px;
+  margin: 0 10px 10px 0px;
 }
 
 .downloadButton {
-  width: 92px;
-  padding: 6px 8px;
-  transform: translateX(-8px);
+  height: 31px;
+  padding: 4px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  top: 0;
+  right: 0
 }
 
 .downloadButton:hover {
@@ -162,7 +193,7 @@
 }
 
 .MBprojectSingleWrapper {
-  border-top: 2px solid black;
+  border-top: var(--border);
   margin: var(--margin-S);
   scroll-behavior: smooth;
 }
@@ -175,12 +206,13 @@
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 68px;
+  top: 42px;
   z-index: 1000;
 }
 
 .MBHeaderLeft {
-  width: 25%;
+  padding-left: 9px;
+  width: 33%;
   display: flex;
   justify-content: space-between;
 }
@@ -199,7 +231,7 @@
 }
 
 .MBControls {
-  border-bottom: 2px solid black;
+  border-bottom: var(--border);
 
   display: flex;
   justify-content: space-between;

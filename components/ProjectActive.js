@@ -33,7 +33,7 @@ const ProjectActive = ({
           <p>{client && <>Client: {client}</>}</p>
           <p>{photography && <>Photography: {photography}</>}</p>
 
-          {presskit && (
+          {/* {presskit && (
             <>
               <h2 className={styles.subHeadline}>Presskit</h2>
               <div className={styles.downloadButton}>
@@ -42,7 +42,7 @@ const ProjectActive = ({
                 </h2>
               </div>{" "}
             </>
-          )}
+          )} */}
         </div>
       </div>
     </>

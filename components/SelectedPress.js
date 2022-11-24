@@ -2,6 +2,7 @@ import React from "react";
 
 const SelectedPress = ({
   lable,
+  link,
   img,
   width,
   height,
@@ -9,7 +10,6 @@ const SelectedPress = ({
   setHoverImgWidth,
   setHoverImgHeight,
 }) => {
-
   return (
     <span
       onMouseEnter={() => {
@@ -17,7 +17,9 @@ const SelectedPress = ({
       }}
       onMouseLeave={() => setHoverImg(null)}
     >
-      {lable}
+      <a href={link} target="_blank">
+        {lable}
+      </a>
     </span>
   );
 };

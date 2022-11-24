@@ -5,6 +5,9 @@
   padding-top: var(--margin-S);
   background: white;
   z-index: 150;
+  display: flex;
+  justify-content: space-between;
+  transition: border-bottom-width 0.2s linear;
 }
 
 .headerAboutWrapper {
@@ -16,16 +19,19 @@
   z-index: 50;
 }
 
-.headerTopWrapper {
-  border-bottom: 2px solid black;
+.headerLeftWrapper {
   height: 27px;
+  width: 150px;
   padding: 0 6px 4px 6px;
   display: flex;
   justify-content: space-between;
 }
 
+.headerPageIndex {
+  border-bottom: var(--border);
+}
+
 .headerAboutTopWrapper {
-  border-bottom: 2px solid black;
   height: 27px;
   padding: 0 4px 4px 4px;
   display: flex;
@@ -33,12 +39,27 @@
   width: calc(100vw - 2 * var(--margin-S));
 }
 
-.headerBottomWrapper {
-  padding: 4px 7px;
+.headerRightWrapper {
+  padding: 4px 7px 0 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 31px;
-  transition: border-bottom-width 0.2s linear;
+  width: 20vw;
+}
+
+.headerRightWrapper h2 {
+  font-size: var(--XSfontSize);
+}
+
+.headerRightWrapper h2:first-child {
+  width: 48%;
+}
+.headerRightWrapper h2:nth-child(2) {
+  width: 32%;
+}
+.headerRightWrapper h2:nth-child(3) {
+  width: 30%;
+  text-align: right;
 }
 
 .headerAboutBottomWrapper {
@@ -88,7 +109,7 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 12px;
-  width: calc(25% - 6px);
+  width: calc(100%);
 }
 
 .headerAboutMid {
@@ -124,18 +145,16 @@
     padding: 0 4px;
   }
 
-  .headerWrapper {
-    width: calc(100vw - var(--margin-S));
-    z-index: 100000;
+  .headerLeftWrapper {
+    padding: 0 6px 4px 3px;
   }
 
-  .headerBottomWrapper {
-    padding: 4px 4px 0 4px;
-    margin-left: 8px;
+  .headerWrapper {
+    width: calc(100vw - 2 * var(--margin-S));
+    z-index: 100000;
+    margin-left: var(--margin-S);
   }
-  .headerBottomLeft {
-    width: 25%;
-  }
+
   .headerAboutBottomWrapper {
     display: none;
   }
@@ -148,5 +167,16 @@
     line-height: var(--XSfontLineHeight);
     padding-bottom: 15px;
     padding-top: 15px;
+  }
+  .headerRightWrapper {
+    width: 30vw;
+    justify-content: space-between;
+    padding-right: 4px;
+  }
+  .headerRightWrapper h2:nth-child(2) {
+    text-align: right;
+  }
+  .headerRightWrapper h2:nth-child(3) {
+    display: none;
   }
 }
