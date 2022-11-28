@@ -56,15 +56,24 @@ const Project = ({
   };
 
   const imageArray = images.map((image, i) => (
-    <span
-      key={i}
-      style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}
-      onMouseEnter={() => setMouseLable(true)}
-      onMouseLeave={() => setMouseLable(false)}
-    >
+    <span key={i} style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}>
       <div
         className={styles.sliderLeftbutton}
         onClick={() => loopImagesBack()}
+        onMouseEnter={() => setMouseLable(true)}
+        onMouseLeave={() => setMouseLable(false)}
+      ></div>
+      <div
+        className={styles.sliderRightbutton}
+        onClick={() => loopImages()}
+        onMouseEnter={() => setMouseLable(true)}
+        onMouseLeave={() => setMouseLable(false)}
+      ></div>
+            <div
+        className={styles.sliderRightbuttonBottom}
+        onClick={() => loopImages()}
+        onMouseEnter={() => setMouseLable(true)}
+        onMouseLeave={() => setMouseLable(false)}
       ></div>
       <Image
         alt={title}
@@ -73,14 +82,11 @@ const Project = ({
         layout="fill"
         objectFit="contain"
         objectPosition="left top"
-        priority={i < 1 ? true : false}
+        priority={i < 2 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
         placeholder="blur"
         blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
-        onClick={() => {
-          loopImages();
-        }}
       />
     </span>
   ));
