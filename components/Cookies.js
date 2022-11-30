@@ -43,7 +43,7 @@ const Cookies = () => {
             style={active == 2 ? hover : unHover}
             onMouseEnter={() => setActive(2)}
           >
-            <Link href={"/about"}> More</Link>
+            <Link href={"/about"}>More</Link>
           </span>
         </div>
       )}
