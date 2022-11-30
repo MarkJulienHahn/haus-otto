@@ -22,7 +22,7 @@
 .headerLeftWrapper {
   height: 27px;
   width: 150px;
-  padding: 0 6px 4px 6px;
+  padding: 0 6px 4px 3px;
   display: flex;
   justify-content: space-between;
 }
@@ -44,7 +44,7 @@
   display: flex;
   justify-content: flex-start;
   height: 31px;
-  width: 20vw;
+  width: clamp(300px, 20vw, 20vw);
 }
 
 .headerRightWrapper h2 {
@@ -63,7 +63,7 @@
 }
 
 .headerAboutBottomWrapper {
-  padding: 4px 7px;
+  padding: 4px 3px;
   display: flex;
   height: 31px;
 }

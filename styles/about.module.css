@@ -4,7 +4,7 @@
 
 .aboutWrapper {
   display: flex;
-  padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
+  padding: var(--margin-S) 0 var(--margin-S) 3px;
   margin-top: 50px;
   width: 100%;
 }

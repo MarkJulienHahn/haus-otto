@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const HeaderAbout = (data) => {
+const HeaderAbout = ({data}) => {
   const [portrait, showPortrait] = useState(false);
 
   return (

@@ -69,12 +69,6 @@ const Project = ({
         onMouseEnter={() => setMouseLable(true)}
         onMouseLeave={() => setMouseLable(false)}
       ></div>
-            <div
-        className={styles.sliderRightbuttonBottom}
-        onClick={() => loopImages()}
-        onMouseEnter={() => setMouseLable(true)}
-        onMouseLeave={() => setMouseLable(false)}
-      ></div>
       <Image
         alt={title}
         key={i}
@@ -103,7 +97,8 @@ const Project = ({
           active
             ? () => {}
             : () => {
-                setActiveIndex(index), setTimeout(scrollDown, 500);
+                setActiveIndex(index)
+                // , setTimeout(scrollDown, 500);
               }
         }
         ref={aboutSection}
