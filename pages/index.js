@@ -6,8 +6,8 @@ import client from "../client";
 
 import styles from "../styles/Home.module.css";
 
-import Header from "../components/Header";
 import Projects from "../components/Projects";
+import Cookies from "../components/Cookies"
 
 export default function Home({ projects, data }) {
   return (
@@ -23,6 +23,7 @@ export default function Home({ projects, data }) {
 
       <main className={styles.main}>
         <Projects projects={projects} data={data[0]} />
+        <Cookies />
       </main>
     </div>
   );

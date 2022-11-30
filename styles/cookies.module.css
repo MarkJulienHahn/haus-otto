@@ -1,0 +1,13 @@
+.cookieWrapper {
+    position: fixed; 
+    bottom: 0;
+    background: white;
+    padding: 2px 0 5px 5px
+}
+
+.cookieButton {
+    height: 100%;
+    padding: 4.5px 12px 8px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+}
