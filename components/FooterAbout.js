@@ -4,8 +4,8 @@ import styles from "../styles/Footer.module.css";
 
 import { PortableText } from "@portabletext/react";
 
-const FooterAbout = ({data}) => {
-  const [showImprint, setShowImprint] = useState(false);
+const FooterAbout = ({data, imprintState}) => {
+  const [showImprint, setShowImprint] = useState(imprintState);
   return (
     <>
       {showImprint && (

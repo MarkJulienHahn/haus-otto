@@ -13,7 +13,7 @@ const Cookies = () => {
 
   const unHover = {
     color: "black",
-    background: "white",
+    background: "none",
   };
 
   return (
@@ -43,7 +43,7 @@ const Cookies = () => {
             style={active == 2 ? hover : unHover}
             onMouseEnter={() => setActive(2)}
           >
-            <Link href={"/about"}>More</Link>
+            <Link href={"/imprint"}>More</Link>
           </span>
         </div>
       )}
