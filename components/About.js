@@ -159,18 +159,25 @@ const About = ({ data }) => {
             <PortableText value={data.contact} />
           </div>
         </div>
+
         <div className={styles.MBaboutPress}>
-          <div className={styles2.headerAboutTop}>
-            <p>Upcoming Shows</p>
-          </div>
-          <div className={styles.aboutUpcomingShows}>
-            {data.upcomingShows.map((show, i) => (
-              <div className={styles.aboutEntry} key={i}>
-                <p>{show.title}</p>
-                <p>{show.year}</p>
+          {data.upcomingShows ? (
+            <>
+              <div className={styles2.headerAboutTop}>
+                <p>Upcoming Shows</p>
               </div>
-            ))}
-          </div>
+              <div className={styles.aboutUpcomingShows}>
+                {data.upcomingShows.map((show, i) => (
+                  <div className={styles.aboutEntry} key={i}>
+                    <p>{show.title}</p>
+                    <p>{show.year}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
 
           <div className={styles2.headerAboutMid}>
             <p>Past Shows</p>
@@ -239,7 +246,9 @@ const About = ({ data }) => {
           )}
         </div>
 
-        <div className={styles.footerWrapper}>©Haus Otto {new Date().getFullYear()}</div>
+        <div className={styles.footerWrapper}>
+          ©Haus Otto {new Date().getFullYear()}
+        </div>
       </div>
     </>
   );
