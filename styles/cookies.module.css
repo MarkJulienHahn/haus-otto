@@ -4,6 +4,10 @@
   background: white;
   padding: 2px 0 5px 5px;
   z-index: 1000;
+  animation: fadeIn 1s ease;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .cookieButton {
@@ -11,6 +15,15 @@
   padding: 5px 12px 8px 12px;
   margin-right: 10px;
   cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 700px) {

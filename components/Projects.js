@@ -24,8 +24,6 @@ const Projects = ({ projects, data }) => {
     setRefMobileHeight(projectsMobileRef.current?.clientHeight);
   }, []);
 
-  console.log(refHeight, height)
-
   return (
     <>
       <Header

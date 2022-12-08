@@ -76,7 +76,7 @@ const Project = ({
         layout="fill"
         objectFit="contain"
         objectPosition="left top"
-        priority={i < 2 ? true : false}
+        // priority={i < 2 ? true : false}
         height={image.dimensions.height}
         width={image.dimensions.width}
         placeholder="blur"
@@ -111,7 +111,6 @@ const Project = ({
               layout="fill"
               objectFit="contain"
               loading="eager"
-              // priority="true"
             />
           </div>
         )}

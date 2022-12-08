@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/cookies.module.css";
 import Link from "next/link";
 
 const Cookies = () => {
   const [seen, setSeen] = useState(false);
   const [active, setActive] = useState(0);
+
+  const cookieFunction = () => {
+    setSeen(true), localStorage.setItem('seen', true);
+  }
+
+  useEffect(() => {
+    const data = localStorage.getItem("seen");
+    setSeen(data)
+  })
 
   const hover = {
     color: "white",
@@ -26,7 +35,7 @@ const Cookies = () => {
             className={styles.cookieButton}
             style={active == 0 ? hover : unHover}
             onMouseEnter={() => setActive(0)}
-            onClick={() => setSeen(true)}
+            onClick={() => cookieFunction()}
           >
             Yes
           </span>
@@ -34,7 +43,7 @@ const Cookies = () => {
             className={styles.cookieButton}
             style={active == 1 ? hover : unHover}
             onMouseEnter={() => setActive(1)}
-            onClick={() => setSeen(true)}
+            onClick={() => cookieFunction()}
           >
             No
           </span>
