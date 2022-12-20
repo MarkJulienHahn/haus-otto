@@ -29,7 +29,7 @@ export default function Home({ projects, data }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projects = await client.fetch(`
   *   [_type == "project"] |order(orderRank) {..., "title": title, "description": description, "images": images[].asset->{url, "dimensions": metadata.dimensions}, photography, year, client, "presskit": presskit.asset->{url}, "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
 }`);
@@ -40,6 +40,5 @@ export async function getStaticProps() {
       projects,
       data,
     },
-    revalidate: 10,
   };
 }

@@ -28,13 +28,12 @@ const imprint = ({ data }) => {
 
 export default imprint;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await client.fetch(`
   *    [_type == "about"]{..., "selectedPress": selectedPress[]{title, link, "image": hoverImage.asset->{url, "dimensions": metadata.dimensions}}, "portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}}`);
   return {
     props: {
       data,
     },
-    revalidate: 10,
   };
 }
