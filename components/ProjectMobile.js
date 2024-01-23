@@ -129,8 +129,9 @@ const ProjectMobile = ({
                   <Image
                     src={image.url}
                     objectPosition="left top"
-                    width={image.dimensions.width}
-                    height={image.dimensions.height}
+                    objectFit="contain"
+                    width={100}
+                    height={100}
                     onClick={() => archiveAction(i + 1)}
                     loading="lazy"
                     // priority={i<5 ? "true" : "false"}
