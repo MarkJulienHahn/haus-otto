@@ -142,13 +142,12 @@ const ProjectMobile = ({
               ))}
             </div>
           ) : (
-            <></>
-            // <SwiperInner
-            //   setCurrentSlide={setCurrentSlide}
-            //   swiperINDX={swiperINDX}
-            //   active={active}
-            //   images={images}
-            // />
+            <SwiperInner
+              setCurrentSlide={setCurrentSlide}
+              swiperINDX={swiperINDX}
+              active={active}
+              images={images}
+            />
           )}
 
           {active ? (

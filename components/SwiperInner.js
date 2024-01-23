@@ -5,12 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "../styles/project.module.css";
 
-const SwiperInner = ({
-  active,
-  swiperINDX,
-  setCurrentSlide,
-  images,
-}) => {
+const SwiperInner = ({ active, swiperINDX, setCurrentSlide, images }) => {
   const swiperRef = useRef(null);
 
   const updateIndex = useCallback(
@@ -41,7 +36,6 @@ const SwiperInner = ({
     updateSlide(swiperINDX);
   }, []);
 
-
   return (
     <div
       className={styles.MBSlider}
@@ -51,7 +45,7 @@ const SwiperInner = ({
     >
       <Swiper className="swiper swiper-17-1" ref={swiperRef} loop={true}>
         {images.map((image, i) => (
-          <SwiperSlide key={i} style={{padding: "8px"}}>
+          <SwiperSlide key={i} style={{ padding: "8px" }}>
             <Image
               src={image.url}
               layout="responsive"
@@ -59,8 +53,8 @@ const SwiperInner = ({
               height="100"
               width="100"
               objectPosition="left top"
-              loading="eager"
-              // priority={i<5 ? "true" : "false"}
+              // loading="eager"
+              priority={i < 3 ? "true" : "false"}
             />
           </SwiperSlide>
         ))}
