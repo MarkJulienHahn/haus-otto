@@ -31,48 +31,47 @@ const Projects = ({ projects, data }) => {
         setActiveIndex={setActiveIndex}
         data={data}
       />
-      {width > 700 && (
+
+      <div
+        className={styles.projectsWrapper}
+        ref={projectsRef}
+        style={
+          activeIndex == null
+            ? {
+                position: "absolute",
+                top: `calc(100vh - ${refHeight + 39}px)`,
+              }
+            : { position: "absolute", top: `0px` }
+        }
+      >
         <div
-          className={styles.projectsWrapper}
-          ref={projectsRef}
+          className={styles.projectsInner}
           style={
-            activeIndex == null
-              ? {
-                  position: "absolute",
-                  top: `calc(100vh - ${refHeight + 39}px)`,
-                }
-              : { position: "absolute", top: `0px` }
+            !activeIndex
+              ? { paddingTop: refHeight - height + 40 }
+              : { paddingTop: 0 }
           }
         >
-          <div
-            className={styles.projectsInner}
-            style={
-              !activeIndex
-                ? { paddingTop: refHeight - height + 40 }
-                : { paddingTop: 0 }
-            }
-          >
-            {projects.map((project, i) => (
-              <Project
-                key={i}
-                setActiveIndex={setActiveIndex}
-                activeIndex={activeIndex}
-                title={project.title}
-                category={project.case}
-                client={project.client}
-                photography={project.photography}
-                presskit={project.presskit?.url}
-                description={project.description}
-                year={project.year}
-                index={i}
-                images={project.images}
-                previewImage={project.previewImage}
-              />
-            ))}
-          </div>
-          <Footer />
+          {projects.map((project, i) => (
+            <Project
+              key={i}
+              setActiveIndex={setActiveIndex}
+              activeIndex={activeIndex}
+              title={project.title}
+              category={project.case}
+              client={project.client}
+              photography={project.photography}
+              presskit={project.presskit?.url}
+              description={project.description}
+              year={project.year}
+              index={i}
+              images={project.images}
+              previewImage={project.previewImage}
+            />
+          ))}
         </div>
-      )}
+        <Footer />
+      </div>
 
       <div
         className={styles.projectsMobileWrapper}
@@ -86,7 +85,7 @@ const Projects = ({ projects, data }) => {
             : { position: "absolute", top: `60px` }
         }
       >
-        {projects.map((project, i) => (
+        {/* {projects.map((project, i) => (
           <ProjectMobile
             key={i}
             setActiveIndex={setActiveIndex}
@@ -102,7 +101,7 @@ const Projects = ({ projects, data }) => {
             images={project.images}
             previewImage={project.previewImage}
           />
-        ))}
+        ))} */}
         <Footer />
       </div>
     </>
