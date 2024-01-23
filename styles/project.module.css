@@ -169,6 +169,10 @@
   z-index: 1000;
 }
 
+.projectOverlay span {
+  position: relative;
+}
+
 .archiveOuter {
   width: 55vw;
 }
@@ -290,6 +294,10 @@
     color: inherit;
   }
 
+  .projectsInner {
+    display: none;
+  }
+
   .projectsWrapper {
     display: none;
   }
@@ -304,5 +312,8 @@
   .subHeadline,
   .downloadButton {
     display: none;
+  }
+  .MBSlider span {
+    position: relative;
   }
 }
