@@ -85,7 +85,7 @@ const Projects = ({ projects, data }) => {
             : { position: "absolute", top: `60px` }
         }
       >
-        {/* {projects.map((project, i) => (
+        {projects.map((project, i) => (
           <ProjectMobile
             key={i}
             setActiveIndex={setActiveIndex}
@@ -101,7 +101,7 @@ const Projects = ({ projects, data }) => {
             images={project.images}
             previewImage={project.previewImage}
           />
-        ))} */}
+        ))}
         <Footer />
       </div>
     </>
