@@ -53,8 +53,8 @@ const SwiperInner = ({ active, swiperINDX, setCurrentSlide, images }) => {
               height="100"
               width="100"
               objectPosition="left top"
-              // loading="eager"
-              priority={i < 3 ? "true" : "false"}
+              loading="lazy"
+              // priority={i < 3 ? "true" : "false"}
             />
           </SwiperSlide>
         ))}
