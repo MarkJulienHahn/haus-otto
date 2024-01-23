@@ -134,8 +134,8 @@ const ProjectMobile = ({
                     onClick={() => archiveAction(i + 1)}
                     loading="lazy"
                     // priority={i<5 ? "true" : "false"}
-                    placeholder="blur"
-                    blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                    // placeholder="blur"
+                    // blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
                   />
                 </div>
               ))}
