@@ -1,15 +1,58 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect } from "react";
 import Head from "next/head";
-
 import client from "../client";
-
 import styles from "../styles/Home.module.css";
-
 import Projects from "../components/Projects";
-import Cookies from "../components/Cookies"
+import Cookies from "../components/Cookies";
 
-export default function Home({ projects, data }) {
+export default function Home() {
+  const [projects, setProjects] = useState([]);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const projects = await client.fetch(`
+          *[_type == "project"] | order(orderRank) {
+            ..., 
+            "title": title, 
+            "description": description, 
+            "images": images[].asset->{url, "dimensions": metadata.dimensions}, 
+            photography, 
+            year, 
+            client, 
+            "presskit": presskit.asset->{url}, 
+            "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
+          }`);
+        const data = await client.fetch(`
+          *[_type == "about"] {
+            "portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}
+          }`);
+        setProjects(projects);
+        setData(data[0]);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!projects.length || !data) {
+    return <div>No data available</div>;
+  }
+
   return (
     <div>
       <Head>
@@ -22,23 +65,9 @@ export default function Home({ projects, data }) {
       </Head>
 
       <main className={styles.main}>
-        <Projects projects={projects} data={data[0]} />
+        <Projects projects={projects} data={data} />
         <Cookies />
       </main>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const projects = await client.fetch(`
-  *   [_type == "project"] |order(orderRank) {..., "title": title, "description": description, "images": images[].asset->{url, "dimensions": metadata.dimensions}, photography, year, client, "presskit": presskit.asset->{url}, "previewImage": previewImage.asset->{url, "dimensions": metadata.dimensions}
-}`);
-  const data = await client.fetch(`
-*      [_type == "about"]{"portrait": portrait.asset->{url, "dimensions": metadata.dimensions, "blurHash": metadata.blurHash}}`);
-  return {
-    props: {
-      projects,
-      data,
-    },
-  };
 }
