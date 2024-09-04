@@ -56,7 +56,8 @@ const ProjectMobile = ({
   };
 
   const close = async () => {
-    setActiveIndex(null), await setTimeout(scrollUp, 500);
+    setActiveIndex(null)
+    // await setTimeout(scrollUp, 500);
   };
 
   useEffect(() => {
