@@ -79,8 +79,8 @@ const Projects = ({ projects, data }) => {
         style={
           activeIndex == null
             ? {
-                position: "absolute",
-                top: `calc(100vh - ${refMobileHeight}px)`,
+                position: "relative",
+                paddingTop: "50px",
               }
             : { position: "absolute", top: `60px` }
         }
