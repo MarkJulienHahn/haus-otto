@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { PortableText } from "@portabletext/react";
 
 import styles from "../styles/about.module.css";
-
+ 
 const imprint = ({ setTheme, data }) => {
 
   return (
