@@ -51,7 +51,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "MJH-Regular", serif;
+  font-family: "MJH-Regular", sans-serif;
   font-size: 20px;
   line-height: 23px;
   letter-spacing: -0.01em;
