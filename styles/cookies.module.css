@@ -1,7 +1,8 @@
 .cookieWrapper {
   position: fixed;
   bottom: 0;
-  background: white;
+  background: var(--bg-color);
+  color: var(--primary-color);
   padding: 2px 0 5px 5px;
   z-index: 1000;
   animation: fadeIn 1s ease;
