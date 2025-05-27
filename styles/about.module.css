@@ -2,6 +2,105 @@
   padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 2fr);
+  width: 100%;
+  grid-gap: 25px;
+  row-gap: 80px;
+  padding-right: 13px;
+  min-height: calc(100vh - 2 * var(--margin-S));
+}
+
+.wrapper p + p {
+  margin-top: 1em;
+}
+
+.col2 {
+  grid-column: span 2;
+}
+.col3 {
+  grid-column: span 3;
+}
+.col4 {
+  grid-column: span 4;
+}
+.col5 {
+  grid-column: span 5;
+}
+
+.list {
+  margin-bottom: 15px;
+}
+
+.footer {
+  display: flex;
+  width: calc(100vw - 2 * var(--margin-S));
+  padding-right: var(--margin-S);
+  justify-content: space-between;
+  font-size: var(--XSfontSize);
+  bottom: 0;
+  padding-bottom: var(--margin-S);
+  background: var(--bg-color);
+  margin-top: 50px;
+}
+
+.menuItem,
+.menuItemLink {
+  font-size: var(--XSfontSize);
+  margin-bottom: 10px;
+}
+
+.menuItemLink {
+  cursor: pointer;
+}
+
+.menuItemRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuItemLink:hover {
+  text-decoration: underline;
+}
+
+.menuItemActive {
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+.textBlock {
+  margin-bottom: 25px;
+}
+
+.smallText,
+.smallText h2 {
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+}
+
+.selectedPress h2 {
+  font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
+}
+
+.headerLeftWrapper {
+  width: 150px;
+  padding: 0 6px 4px 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerImg {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+}
+
+.headerImg img {
+  max-height: 50vh;
+}
+
 .aboutWrapper {
   display: flex;
   padding: var(--margin-S) 0 var(--margin-S) 3px;
@@ -15,9 +114,8 @@
 }
 
 .aboutText p {
-  padding-bottom: 10px
+  padding-bottom: 10px;
 }
-
 
 .aboutSelectedPress {
   width: 41.666%;
@@ -28,14 +126,36 @@
   justify-content: space-between;
 }
 
+.aboutEntry h2:first-child {
+  padding-right: 20px;
+}
+
 .MBaboutWrapper {
   display: none;
 }
 
-@media screen and (max-width: 700px) {
-  .main {
-    padding: 0;
+.imprintWrapper p {
+  padding-left: 4px;
+}
+
+.imprintWrapper {
+  margin-top: 35px;
+  width: 35%;
+  padding-bottom: var(--margin-M);
+  min-width: 500px;
+  max-width: calc(100vw - 2 * var(--margin-S));
+}
+
+@media screen and (max-width: 1400px) {
+  .col2 {
+    grid-column: span 3;
   }
+  .selectedPress {
+    grid-column: span 3;
+  }
+}
+
+@media screen and (max-width: 1100px) {
   .aboutWrapper {
     display: none;
   }
@@ -52,12 +172,12 @@
   }
 
   .MBaboutText p {
-    padding-bottom: 15px
+    padding-bottom: 15px;
   }
 
   .MBaboutContact {
     padding-bottom: 30px;
-    width: calc(100% - 140px)
+    width: calc(100% - 140px);
   }
   .MBaboutPress {
     font-size: var(--XSfontSize);
@@ -101,9 +221,33 @@
     font-size: var(--XSfontSize);
     line-height: var(--XSfontLineHeight);
     border-top: var(--border);
-    height: 31px
+    height: 31px;
   }
   .imprintTop {
     padding-bottom: 20px;
+  }
+  .textColumn {
+    grid-column: span 6;
+  }
+  .serviceColumn {
+    grid-column: span 3;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    display: block;
+  }
+  .aboutEntry,
+  .menuItemRow,
+  .selectedPress {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .imprintWrapper {
+    width: 100%;
+    min-width: unset;
   }
 }

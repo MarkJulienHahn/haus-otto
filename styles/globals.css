@@ -1,23 +1,14 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Arial, serif;
-  font-size: 16px;
-  line-height: 23px;
-  font-weight: normal;
-  scroll-behavior: smooth;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "MJH-Regular";
+  src: url("/fonts/MJH-100-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root {
@@ -29,43 +20,78 @@ a {
   --XSfontSize: 11px;
   --XSfontLineHeight: 14px;
 
-  --border: 1.5px solid black;
+  --border: 1.5px solid;
+
+  --bg-color: white;
+  --primary-color: black;
+}
+
+.dark-mode {
+  --bg-color: black;
+  --primary-color: white;
+}
+
+.color-mode {
+  --bg-color: #af7653;
+  --primary-color: black;
 }
 
 ::-moz-selection {
   background: black;
-  color: white;
+  color: var(--bg-color);
   opacity: 1;
 }
 ::selection {
   background: black;
-  color: white;
+  color: var(--bg-color);
   opacity: 1;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "MJH-Regular", serif;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: -0.01em;
+  font-weight: normal;
+  scroll-behavior: smooth;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+  overscroll-behavior: none;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 h1,
 h2,
 p {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 23px;
   font-weight: normal;
   margin: 0;
 }
 
 p a {
-  border-bottom: var(--border)
+  border-bottom: var(--border);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1100px) {
   :root {
     --margin-XL: 600px;
     --margin-L: 250px;
     --margin-M: 30px;
     --margin-S: 8px;
-  
+
     --XSfontSize: 12px;
     --XSfontLineHeight: 14px;
 
-    --border: 1.5px solid black;
+    --border: 1.5px solid var(--primary-color);
   }
 }

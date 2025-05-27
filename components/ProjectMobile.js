@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import ProjectActiveMobile from "./ProjectActiveMobile";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from "next/router";
 
 import SwiperInner from "./SwiperInner";
 
@@ -15,7 +15,6 @@ const ProjectMobile = ({
   setActiveIndex,
   activeIndex,
   title,
-  category,
   year,
   index,
   description,
@@ -23,6 +22,7 @@ const ProjectMobile = ({
   presskit,
   client,
   images,
+  slug,
 }) => {
   const [active, setActive] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,25 +39,18 @@ const ProjectMobile = ({
     });
   };
 
-  // const scrollDown = () => {
-  //   aboutSection.current.scrollIntoView() + 40
-  // };
-
-  const scrollUp = () => {
-    window.scrollTo({
-      top: 9999,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  const router = useRouter();
 
   const open = async () => {
     setActiveIndex(index), setTimeout(scrollDown, 200);
+    router.push(`?project=${slug}`, undefined, { shallow: true });
   };
 
   const close = async () => {
-    setActiveIndex(null)
-    // await setTimeout(scrollUp, 500);
+    await router.replace(router.pathname, undefined, {
+      shallow: true,
+    });
+    setActiveIndex(null);
   };
 
   useEffect(() => {
@@ -101,8 +94,8 @@ const ProjectMobile = ({
             style={
               active
                 ? {
-                    background: "black",
-                    color: "white",
+                    background: "var(--primary-color)",
+                    color: "var(--bg-color)",
                     height: "36px",
                     padding: "0 8px",
                     marginLeft: "4px",
@@ -117,7 +110,7 @@ const ProjectMobile = ({
             {title}
           </div>
           <div className={styles.MBHeaderLeft}>
-            <p>{category}</p>
+            <p></p>
             <p>{year}</p>
           </div>
         </div>

@@ -4,8 +4,14 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const Header = ({ activeIndex, setActiveIndex, data }) => {
+import { useRouter } from "next/router";
+
+const Header = ({ setTheme, data }) => {
   const [portrait, showPortrait] = useState(false);
+  const router = useRouter();
+
+  const landing = router.query.landing;
+  const about = router.pathname == "/about";
 
   return (
     <>
@@ -23,32 +29,61 @@ const Header = ({ activeIndex, setActiveIndex, data }) => {
         </div>
       )}
 
-      <div
-        className={styles.headerWrapper}
-        style={activeIndex != null ? { borderBottom: "var(--border)" } : {}}
-      >
+      <div className={styles.headerWrapper}>
         <div className={styles.headerLeftWrapper}>
           <div
             className={styles.headerPageIndex}
-            onClick={() => setActiveIndex(null)}
+            // onClick={() => setActiveIndex(null)}
           >
-            <div style={{ cursor: "pointer" }}>Haus Otto</div>
+            <div
+              className={`${styles.menuItem} ${
+                landing == "true" && styles.menuItemActive
+              }`}
+              onClick={() =>
+                router.push(`/?landing=true`, undefined, { shallow: true })
+              }
+            >
+              Haus Otto
+            </div>
           </div>
           <div
-            onMouseEnter={() => showPortrait(true)}
-            onMouseLeave={() => showPortrait(false)}
+            onMouseEnter={
+              data?.portrait ? () => showPortrait(true) : () => {}
+            }
+            onMouseLeave={
+              data?.portrait ? () => showPortrait(false) : () => {}
+            }
+            className={`${styles.menuItem} ${about && styles.menuItemActive}`}
           >
             <Link href={"/about"}>
               <a>About</a>
             </Link>
           </div>
         </div>
-
-        <div className={styles.headerRightWrapper}>
-          <h2>Case</h2>
-
-          <h2>Year</h2>
-          <h2>Presskit</h2>
+        <div className={styles.headerRight}>
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("light")}
+            style={{ background: "white" }}
+          />
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("dark")}
+            style={{ background: "black" }}
+          />
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("color")}
+            style={{ background: "#af7653" }}
+          />
+          <div
+            className={`${styles.indexButton} ${styles.menuItem} ${
+              landing !== "true" && !about && styles.menuItemActive
+            }`}
+            onClick={() => router.push(`/`, undefined, { shallow: true })}
+          >
+            Index
+          </div>
         </div>
       </div>
     </>

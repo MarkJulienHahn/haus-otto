@@ -2,20 +2,21 @@
   width: calc(100vw - 2 * var(--margin-S));
   position: fixed;
   top: 0;
+
   padding-top: var(--margin-S);
-  background: white;
-  z-index: 150;
+  background: var(--bg-color);
+  z-index: 1200;
   display: flex;
   justify-content: space-between;
   transition: border-bottom-width 0.2s linear;
+  font-size: var(--XSfontSize);
 }
 
 .headerAboutWrapper {
   width: calc(100vw - var(--margin-S));
   position: fixed;
-  top: 0;
   padding-top: var(--margin-S);
-  background: white;
+  background: var(--bg-color);
   z-index: 50;
 }
 
@@ -28,7 +29,6 @@
 }
 
 .headerPageIndex {
-  border-bottom: var(--border);
 }
 
 .headerAboutTopWrapper {
@@ -129,6 +129,25 @@
   pointer-events: none;
 }
 
+.headerRight {
+  display: flex;
+}
+
+.colorSwitch {
+  width: 14px;
+  height: 14px;
+  background: black;
+  border-radius: 50%;
+  margin: 4px 3px;
+  cursor: pointer;
+  border: 0.5px solid;
+}
+
+.indexButton {
+  margin-left: 20px;
+  padding-right: 3px;
+}
+
 .portraitOverlay {
   position: fixed;
   top: 0;
@@ -139,7 +158,24 @@
   z-index: 1000;
 }
 
-@media screen and (max-width: 700px) {
+.menuItem {
+  cursor: pointer;
+  text-underline-offset: 3px;
+}
+
+.menuItem:hover {
+  text-decoration: underline;
+}
+
+.menuItemActive {
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .main {
+    margin-left: 4px;
+  }
   .headerTopWrapper {
     margin: 0 0 0 var(--margin-S);
     padding: 0 4px;
@@ -153,6 +189,7 @@
     width: calc(100vw - 2 * var(--margin-S));
     z-index: 100000;
     margin-left: var(--margin-S);
+    left: 0;
   }
 
   .headerAboutBottomWrapper {

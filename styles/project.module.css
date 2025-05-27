@@ -1,7 +1,9 @@
 .projectsWrapper {
   width: calc(100vw - 16px);
-  margin-top: 39px;
-  background: white;
+  /* margin-top: 39px;
+   */
+  margin-top: 78px;
+  background: var(--bg-color);
   cursor: default;
   transition: top ease 0.5s;
   animation: fadeIn 1s linear;
@@ -25,8 +27,8 @@
 }
 
 .projectSingleWrapper {
-  border-top: var(--border);
   display: flex;
+  /* height: 1.3em; */
 }
 
 .projectRowLeft {
@@ -37,8 +39,8 @@
 }
 
 .projectSingleWrapper:hover .projectHeader h1 {
-  background: black;
-  color: white;
+  background: var(--primary-color);
+  color: var(--bg-color);
 }
 
 .projectActiveWrapper {
@@ -61,7 +63,7 @@
 }
 
 .projectColumnLeft {
-  width: 25vw;
+  width: 25%;
 }
 
 .projectHeader {
@@ -69,11 +71,35 @@
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 40px;
+  top: 32px;
   right: 0;
 }
 
-.projectHeaderRight h1:first-child {
+.projectHeadlines {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  top: -20px;
+}
+
+.projectHeadlinesInner {
+  width: 66%;
+  min-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding-right: var(--margin-S);
+}
+
+.projectHeadlines h1 {
+  font-size: var(--XSfontSize);
+}
+
+.alignRight {
+  text-align: right;
+}
+
+/* .projectHeaderRight h1:first-child {
   width: calc(48% - 14px);
 }
 .projectHeaderRight h1:nth-child(2) {
@@ -82,10 +108,10 @@
 .projectHeaderRight h1:nth-child(3) {
   width: 30%;
   text-align: right;
-}
+} */
 
 .projectHeader h1 {
-  height: 31px;
+  height: 24px;
   padding: 4px 0;
   display: flex;
   justify-content: center;
@@ -96,29 +122,39 @@
   height: 31px;
   padding: 5px;
   margin-right: 4px;
-  background: white;
+  background: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .projectHeader h2:hover {
-  background: black;
-  color: white;
+  background: var(--primary-color);
+  color: var(--bg-color);
 }
 
 .projectColumnRight {
-  width: clamp(300px, 20vw, 20vw);
+  width: 66%;
+  min-width: 900px;
   position: absolute;
   right: 0;
 }
 
 .projectHeaderRight {
   padding: 5px 4px 4px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   position: sticky;
   top: 39px;
   right: 0;
+}
+
+.projectCol1 {
+  grid-column: span 1;
+}
+
+.projectCol2 {
+  grid-column: span 2;
 }
 
 .sliderLeftbutton {
@@ -175,6 +211,7 @@
 
 .archiveOuter {
   width: 55vw;
+  z-index: 100;
 }
 
 .archiveWrapper {
@@ -207,8 +244,8 @@
 }
 
 .downloadButton:hover {
-  color: white;
-  background: black;
+  color: var(--bg-color);
+  background: var(--primary-color);
 }
 
 .projectsMobileWrapper {
@@ -218,7 +255,6 @@
 }
 
 .MBprojectSingleWrapper {
-  border-top: var(--border);
   margin: var(--margin-S);
   scroll-behavior: smooth;
 }
@@ -256,11 +292,8 @@
 }
 
 .MBControls {
-  border-bottom: var(--border);
-
   display: flex;
   justify-content: space-between;
-
   padding: 120vw 4px 4px 4px;
 }
 
@@ -283,7 +316,7 @@
   padding: 0px 10px 4px 0px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1100px) {
   .projectOverlay {
     display: none !important;
   }

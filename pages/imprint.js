@@ -1,26 +1,31 @@
-import React from "react";
-import HeaderAbout from "../components/HeaderAbout";
-import FooterAbout from "../components/FooterAbout";
-
 import Head from "next/head";
 import client from "../client";
 
-import About from "../components/About";
+import Header from "../components/Header";
+import { PortableText } from "@portabletext/react";
 
 import styles from "../styles/about.module.css";
 
-const imprint = ({ data }) => {
+const imprint = ({ setTheme, data }) => {
+
   return (
     <>
       <Head>
         <title>Haus Otto | Imprint</title>
-        <meta name="description" content="Haus Otto wurde von Patrick Henry Nagel und Nils Körner gegründet, nachdem sie gemeinsam Industriedesign an der Staatlichen Akademie der Bildenden Künste in Stuttgart studiert hatten." />
+        <meta
+          name="description"
+          content="Haus Otto wurde von Patrick Henry Nagel und Nils Körner gegründet, nachdem sie gemeinsam Industriedesign an der Staatlichen Akademie der Bildenden Künste in Stuttgart studiert hatten."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <HeaderAbout data={data[0]} />
-        <About data={data[0]} />
-        <FooterAbout data={data[0]} imprintState={true}/>
+        <div className={styles.imprintWrapper}>
+          <Header
+            data={data}
+            setTheme={setTheme}
+          />
+          <PortableText value={data[0].imprint} />
+        </div>
       </main>
     </>
   );

@@ -4,17 +4,22 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const HeaderAbout = ({data}) => {
+import { useRouter } from "next/router";
+
+const Header = ({ setTheme, setActiveIndex, data }) => {
   const [portrait, showPortrait] = useState(false);
+  const router = useRouter();
+
+  const landing = router.query.landing;
 
   return (
     <>
       {portrait && (
         <div className={styles.portraitOverlay}>
           <Image
-            src={data.portrait?.url}
-            width={data.portrait?.dimensions.width}
-            height={data.portrait?.dimensions.height}
+            src={data.portrait.url}
+            width={data.portrait.dimensions.width}
+            height={data.portrait.dimensions.height}
             layout="fill"
             objectFit="contain"
             loading="eager"
@@ -25,14 +30,54 @@ const HeaderAbout = ({data}) => {
 
       <div className={styles.headerWrapper}>
         <div className={styles.headerLeftWrapper}>
-          <Link href={"/"}>
-            <div style={{ cursor: "pointer" }}>Haus Otto</div>
-          </Link>
+          <div
+            className={styles.headerPageIndex}
+            onClick={() => setActiveIndex(null)}
+          >
+            <div
+              className={`${styles.menuItem} ${
+                landing && styles.menuItemActive
+              }`}
+              onClick={() =>
+                router.push(`/?landing=true`, undefined, { shallow: true })
+              }
+            >
+              Haus Otto
+            </div>
+          </div>
           <div
             onMouseEnter={() => showPortrait(true)}
             onMouseLeave={() => showPortrait(false)}
+            className={styles.menuItem}
           >
-            <a className={styles.headerPageIndex}>About</a>
+            <Link href={"/about"}>
+              <a>About</a>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.headerRight}>
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("light")}
+            style={{ background: "white" }}
+          />
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("dark")}
+            style={{ background: "black" }}
+          />
+          <div
+            className={styles.colorSwitch}
+            onClick={() => setTheme("color")}
+            style={{ background: "#af7653" }}
+          />
+          <div
+            className={`${styles.indexButton} ${styles.menuItem} ${
+              !landing && styles.menuItemActive
+            }`}
+            onClick={() => router.push(`/`, undefined, { shallow: true })}
+          >
+            Index
           </div>
         </div>
       </div>
@@ -40,4 +85,4 @@ const HeaderAbout = ({data}) => {
   );
 };
 
-export default HeaderAbout;
+export default Header;

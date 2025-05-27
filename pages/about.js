@@ -1,10 +1,8 @@
-import React from "react";
-import HeaderAbout from "../components/HeaderAbout";
+import Header from "../components/Header";
 import FooterAbout from "../components/FooterAbout";
 
 import Head from "next/head";
 import client from "../client";
-
 import About from "../components/About";
 
 import styles from "../styles/about.module.css";
@@ -18,9 +16,8 @@ const about = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <HeaderAbout data={data[0]} />
+
         <About data={data[0]} />
-        <FooterAbout data={data[0]} />
       </main>
     </>
   );

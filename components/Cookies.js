@@ -16,12 +16,12 @@ const Cookies = () => {
   })
 
   const hover = {
-    color: "white",
-    background: "black",
+    color: "var(--bg-color)",
+    background: "var(--primary-color)",
   };
 
   const unHover = {
-    color: "black",
+    color: "var(--primary-color)",
     background: "none",
   };
 

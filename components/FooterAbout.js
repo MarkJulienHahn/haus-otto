@@ -18,7 +18,7 @@ const FooterAbout = ({data, imprintState}) => {
           <PortableText value={data.imprint} />
         </div>
       )}
-
+{/* 
       <div className={styles.footerTop}>
         <div className={styles.footerTopCol1}>
           <h2>Contact</h2>
@@ -38,7 +38,7 @@ const FooterAbout = ({data, imprintState}) => {
             <a href={data.instagram} target="_blank" rel="noreferrer">@haus.otto</a>
           </p>
         </div>
-      </div>
+      </div> */}
       <div className={styles.footerImprintButton} onClick={() => setShowImprint(!showImprint)}>Imprint</div>
       <div className={styles.footerWrapper}>© Haus Otto {new Date().getFullYear()}</div>
     </>

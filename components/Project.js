@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ProjectActive from "./ProjectActive";
 import MouseElement from "./MouseElement";
 
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import styles from "../styles/project.module.css";
 
@@ -20,6 +21,7 @@ const Project = ({
   presskit,
   client,
   images,
+  slug,
 }) => {
   const [active, setActive] = useState(false);
   const [imgIndex, setImgIndex] = useState(0);
@@ -27,13 +29,7 @@ const Project = ({
   const [showIndex, setShowIndex] = useState(false);
 
   const aboutSection = useRef(null);
-
-  const scrollDown = () => {
-    window.scrollTo({
-      top: aboutSection.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
+  const router = useRouter();
 
   useEffect(() => {
     index === activeIndex ? setActive(true) : setActive(false);
@@ -93,14 +89,12 @@ const Project = ({
 
       <div
         className={styles.projectSingleWrapper}
-        onClick={
-          active
-            ? () => {}
-            : () => {
-                setActiveIndex(index)
-                // , setTimeout(scrollDown, 500);
-              }
-        }
+        onClick={() => {
+          if (!active) {
+            setActiveIndex(index);
+            router.push(`?project=${slug}`, undefined, { shallow: true });
+          }
+        }}
         ref={aboutSection}
         // style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
       >
@@ -118,8 +112,17 @@ const Project = ({
         <div className={styles.projectColumnLeft}>
           <div className={styles.projectHeader}>
             <h1
-              style={active ? { background: "black", color: "white" } : {}}
-              onClick={active ? () => setActiveIndex(null) : () => {}}
+              style={active ? { background: "var(--primary-color)", color: "var(--bg-color)" } : {}}
+              onClick={
+                active
+                  ? async () => {
+                      await router.replace(router.pathname, undefined, {
+                        shallow: true,
+                      });
+                      setActiveIndex(null);
+                    }
+                  : () => {}
+              }
             >
               &nbsp;{title}&nbsp;
             </h1>
@@ -172,10 +175,10 @@ const Project = ({
 
         <div className={styles.projectColumnRight}>
           <div className={styles.projectHeaderRight}>
-            <h1>{category}</h1>
-            <h1>{year}</h1>
-
-            <h2 className={styles.downloadButton}>
+            <h1 className={styles.projectCol2}>{client}</h1>
+            <h1 className={styles.projectCol2}>{category}</h1>
+            <h1 className={styles.projectCol1}>{year}</h1>
+            <h2 className={`${styles.downloadButton} ${styles.projectCol1}`}>
               <a href={presskit}>Download</a>
             </h2>
           </div>
