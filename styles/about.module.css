@@ -2,6 +2,7 @@
   padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
   padding-left: 13px;
   position: relative;
+  min-height: 100vh;
 }
 
 .wrapper {
@@ -247,7 +248,8 @@
     grid-column: span 3;
   }
   .footerWrapper {
-    position: absolute;
+    position: fixed;
+    bottom: 12px;
     left: 0;
     width: 100%;
   }
