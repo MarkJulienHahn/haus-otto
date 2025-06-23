@@ -203,7 +203,7 @@ const Project = ({
             <h1 className={styles.projectCol2}>{client}</h1>
             <h1 className={styles.projectCol2}>
               {categories?.map((category, i) => (
-                <span>
+                <span key={i}>
                   {category}
                   {i + 2 <= categories.length ? ", " : ""}
                 </span>
