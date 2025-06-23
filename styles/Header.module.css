@@ -1,15 +1,8 @@
 .headerWrapper {
-  width: calc(100vw - 2 * var(--margin-S));
-  position: fixed;
-  top: 0;
-
-  padding-top: var(--margin-S);
-  background: var(--bg-color);
-  z-index: 1200;
-  display: flex;
-  justify-content: space-between;
-  transition: border-bottom-width 0.2s linear;
   font-size: var(--XSfontSize);
+  width: 100%;
+  position: relative;
+  z-index: 100;
 }
 
 .headerAboutWrapper {
@@ -22,10 +15,14 @@
 
 .headerLeftWrapper {
   height: 27px;
-  width: 150px;
+  width: 95px;
   padding: 0 6px 4px 3px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 17px;
+  z-index: 1000;
+  margin-left: 3px;
 }
 
 .headerPageIndex {
@@ -131,6 +128,9 @@
 
 .headerRight {
   display: flex;
+  position: absolute;
+  right: 0px;
+  top: 17px;
 }
 
 .colorSwitch {

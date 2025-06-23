@@ -1,16 +1,13 @@
 .wrapper {
-  width: 100vw;
-  height: 100svh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1001;
+  /* width: 100vw; */
+  height: calc(100svh - 60px);
   background: var(--bg-color);
   transition: opacity 0.5s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
+  position: relative;
 }
 
 .hidden {
@@ -24,7 +21,7 @@
 }
 
 .imageWrapper {
-  height: calc(100% - 2* var(--margin-M));
+  height: calc(100% - 2 * var(--margin-M));
   width: 100%;
   position: relative;
   padding-bottom: var(--margin-M);
@@ -37,4 +34,10 @@
   max-height: 100%;
   object-fit: contain;
   position: relative;
+}
+
+@media screen and (max-width: 1100px) {
+  .wrapper {
+    margin-bottom: 20vh;
+  }
 }

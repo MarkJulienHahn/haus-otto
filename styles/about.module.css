@@ -1,5 +1,7 @@
 .main {
   padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
+  padding-left: 13px;
+  position: relative;
 }
 
 .wrapper {
@@ -9,7 +11,7 @@
   grid-gap: 25px;
   row-gap: 80px;
   padding-right: 13px;
-  min-height: calc(100vh - 2 * var(--margin-S));
+  margin-bottom: 40px;
 }
 
 .wrapper p + p {
@@ -85,8 +87,8 @@
 }
 
 .headerLeftWrapper {
-  width: 150px;
-  padding: 0 6px 4px 3px;
+  width: 95px;
+  padding: 8px 6px 4px 0px;
   display: flex;
   justify-content: space-between;
 }
@@ -144,6 +146,18 @@
   padding-bottom: var(--margin-M);
   min-width: 500px;
   max-width: calc(100vw - 2 * var(--margin-S));
+}
+
+.serviceColumn {
+  padding-top: 8px;
+}
+
+.exhibitionsColumn {
+  padding-top: 12px;
+}
+
+.workshopsMobile {
+  display: none;
 }
 
 @media screen and (max-width: 1400px) {
@@ -232,6 +246,11 @@
   .serviceColumn {
     grid-column: span 3;
   }
+  .footerWrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -242,6 +261,15 @@
   .menuItemRow,
   .selectedPress {
     max-width: 500px;
+  }
+  .selectedPress {
+    display: none;
+  }
+  .workshopsDesktop {
+    display: none;
+  }
+  .workshopsMobile {
+    display: block;
   }
 }
 

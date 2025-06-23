@@ -1,5 +1,7 @@
 .main {
   padding: var(--margin-S);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .projectsHome {

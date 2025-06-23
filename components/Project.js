@@ -12,7 +12,7 @@ const Project = ({
   setActiveIndex,
   activeIndex,
   title,
-  category,
+  categories,
   year,
   index,
   previewImage,
@@ -51,6 +51,22 @@ const Project = ({
     setShowIndex(false), setImgIndex(indx);
   };
 
+  // 👇 Scroll on direct project link
+  useEffect(() => {
+    if (!router.isReady) return;
+    const hasProjectQuery = !!router.query.project;
+    if (!hasProjectQuery) return;
+
+    const timeout = setTimeout(() => {
+      aboutSection.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const imageArray = images.map((image, i) => (
     <span key={i} style={i == imgIndex ? { opacity: "1" } : { opacity: "0" }}>
       <div
@@ -80,6 +96,8 @@ const Project = ({
       />
     </span>
   ));
+
+  console.log(categories?.length);
 
   return (
     <>
@@ -112,7 +130,14 @@ const Project = ({
         <div className={styles.projectColumnLeft}>
           <div className={styles.projectHeader}>
             <h1
-              style={active ? { background: "var(--primary-color)", color: "var(--bg-color)" } : {}}
+              style={
+                active
+                  ? {
+                      background: "var(--primary-color)",
+                      color: "var(--bg-color)",
+                    }
+                  : {}
+              }
               onClick={
                 active
                   ? async () => {
@@ -176,7 +201,14 @@ const Project = ({
         <div className={styles.projectColumnRight}>
           <div className={styles.projectHeaderRight}>
             <h1 className={styles.projectCol2}>{client}</h1>
-            <h1 className={styles.projectCol2}>{category}</h1>
+            <h1 className={styles.projectCol2}>
+              {categories?.map((category, i) => (
+                <span>
+                  {category}
+                  {i + 2 <= categories.length ? ", " : ""}
+                </span>
+              ))}
+            </h1>
             <h1 className={styles.projectCol1}>{year}</h1>
             <h2 className={`${styles.downloadButton} ${styles.projectCol1}`}>
               <a href={presskit}>Download</a>

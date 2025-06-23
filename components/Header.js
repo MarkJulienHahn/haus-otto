@@ -39,9 +39,9 @@ const Header = ({ setTheme, data }) => {
               className={`${styles.menuItem} ${
                 landing == "true" && styles.menuItemActive
               }`}
-              onClick={() =>
-                router.push(`/?landing=true`, undefined, { shallow: true })
-              }
+              // onClick={() =>
+              //   router.push(`/?landing=true`, undefined, { shallow: true })
+              // }
             >
               Haus Otto
             </div>
@@ -56,7 +56,7 @@ const Header = ({ setTheme, data }) => {
             className={`${styles.menuItem} ${about && styles.menuItemActive}`}
           >
             <Link href={"/about"}>
-              <a>About</a>
+              <a>Info</a>
             </Link>
           </div>
         </div>
@@ -82,7 +82,7 @@ const Header = ({ setTheme, data }) => {
             }`}
             onClick={() => router.push(`/`, undefined, { shallow: true })}
           >
-            Index
+            Projects
           </div>
         </div>
       </div>

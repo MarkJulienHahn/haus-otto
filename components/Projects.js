@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-
 import styles from "../styles/project.module.css";
 
 import useWindowDimensions from "./hooks/useWindowDimensions";
@@ -8,9 +7,8 @@ import { useRouter } from "next/router";
 import Project from "./Project";
 import ProjectMobile from "./ProjectMobile";
 import Footer from "./Footer";
-import Header from "./Header";
 
-const Projects = ({ setTheme, projects, data }) => {
+const Projects = ({ projects }) => {
   const { height } = useWindowDimensions();
 
   const [sortKey, setSortKey] = useState("year");
@@ -31,8 +29,6 @@ const Projects = ({ setTheme, projects, data }) => {
     setRefMobileHeight(projectsMobileRef.current?.clientHeight);
   }, []);
 
-
-
   useEffect(() => {
     const sorted = [...projects].sort((a, b) => {
       const valA = a[sortKey]?.toString().toLowerCase() || "";
@@ -42,8 +38,6 @@ const Projects = ({ setTheme, projects, data }) => {
     });
     setSortedProjects(sorted);
   }, [sortKey, sortOrder, projects]);
-
-
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -60,32 +54,59 @@ const Projects = ({ setTheme, projects, data }) => {
     }
   }, [router.isReady, router.query.project, sortedProjects, activeIndex]);
 
+  // 👇 Intersection Observer for desktop
+  useEffect(() => {
+    const section = projectsRef.current;
+   
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // setActiveIndex(null);
+          const { project, ...restQuery } = router.query;
+        }
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.unobserve(section);
+  }, [projectsRef.current]);
+
+  // 👇 Intersection Observer for mobile
+  useEffect(() => {
+    const section = projectsMobileRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // setActiveIndex(null);
+          const { project, ...restQuery } = router.query;
+        }
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.unobserve(section);
+  }, []);
+
   return (
     <>
-      <Header
-        data={data}
-        setTheme={setTheme}
-      />
-
-      <div
-        className={styles.projectsWrapper}
-        ref={projectsRef}
-        style={
-          activeIndex == null
-            ? {
-                position: "absolute",
-                top: `calc(100vh - ${refHeight + 120}px)`,
-              }
-            : { position: "absolute", top: `0px` }
-        }
-      >
+      <div className={styles.projectsWrapper} ref={projectsRef}>
         <div
           className={styles.projectsInner}
-          style={
-            !activeIndex
-              ? { paddingTop: refHeight - height + 80 }
-              : { paddingTop: 0 }
-          }
+          // style={
+          //   !activeIndex
+          //     ? { paddingTop: refHeight - height + 80 }
+          //     : { paddingTop: 0 }
+          // }
         >
           <div className={styles.projectHeadlines}>
             <div className={styles.projectHeadlinesInner}>
@@ -155,7 +176,7 @@ const Projects = ({ setTheme, projects, data }) => {
               activeIndex={activeIndex}
               title={project.title}
               slug={project.slug?.current}
-              category={project.case}
+              categories={project.categories}
               client={project.client}
               photography={project.photography}
               presskit={project.presskit?.url}
@@ -170,18 +191,7 @@ const Projects = ({ setTheme, projects, data }) => {
         <Footer />
       </div>
 
-      <div
-        className={styles.projectsMobileWrapper}
-        ref={projectsMobileRef}
-        style={
-          activeIndex == null
-            ? {
-                position: "relative",
-                paddingTop: "50px",
-              }
-            : { position: "absolute", top: `60px` }
-        }
-      >
+      <div className={styles.projectsMobileWrapper} ref={projectsMobileRef}>
         {projects.map((project, i) => (
           <ProjectMobile
             key={i}
@@ -189,7 +199,6 @@ const Projects = ({ setTheme, projects, data }) => {
             activeIndex={activeIndex}
             title={project.title}
             slug={project.slug?.current}
-            category={project.case}
             client={project.client}
             photography={project.photography}
             presskit={project.presskit?.url}

@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-
-import ProjectActiveMobile from "./ProjectActiveMobile";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-
-import SwiperInner from "./SwiperInner";
-
-import "swiper/css";
-
 import Image from "next/image";
 
+import ProjectActiveMobile from "./ProjectActiveMobile";
+import SwiperInner from "./SwiperInner";
+
 import styles from "../styles/project.module.css";
+import "swiper/css";
 
 const ProjectMobile = ({
   setActiveIndex,
@@ -30,20 +27,13 @@ const ProjectMobile = ({
   const [swiperINDX, setSwiperINDX] = useState(1);
 
   const aboutSection = useRef(null);
-
-  const scrollDown = () => {
-    window.scrollTo({
-      top: aboutSection.current.offsetTop + 21,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
+  const projectRef = useRef(null);
   const router = useRouter();
 
   const open = async () => {
-    setActiveIndex(index), setTimeout(scrollDown, 200);
-    router.push(`?project=${slug}`, undefined, { shallow: true });
+    setActiveIndex(index);
+    await router.push(`?project=${slug}`, undefined, { shallow: true });
+    // Scrolling now handled in useEffect
   };
 
   const close = async () => {
@@ -51,32 +41,67 @@ const ProjectMobile = ({
       shallow: true,
     });
     setActiveIndex(null);
+    setShowIndex(false);
   };
 
   useEffect(() => {
-    index === activeIndex ? setActive(true) : setActive(false);
+    const isActive = index === activeIndex;
+    setActive(isActive);
+
+    if (isActive && aboutSection.current) {
+      const scrollToSection = () => {
+        aboutSection.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      };
+
+      // Wait for two animation frames to ensure layout is stable
+      const frame1 = requestAnimationFrame(() => {
+        const frame2 = requestAnimationFrame(() => {
+          scrollToSection();
+        });
+      });
+
+      return () => {
+        cancelAnimationFrame(frame1);
+      };
+    }
   }, [activeIndex]);
 
   // useEffect(() => {
-  //   setTimeout(scrollUp, 500);
+  //   if (!router.isReady) return;
+  //   const hasProjectQuery = !!router.query.project;
+  //   if (!hasProjectQuery) return;
+
+  //   const timeout = setTimeout(() => {
+  //     projectRef.current?.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }, 1000);
+
+  //   return () => clearTimeout(timeout);
   // }, []);
 
   const archiveAction = (indx) => {
-    setSwiperINDX(indx), setShowIndex(false);
+    setSwiperINDX(indx);
+    setShowIndex(false);
   };
 
   return (
     <div>
+      <div ref={projectRef}></div>
       <div
         className={styles.MBprojectSingleWrapper}
         onClick={
           active
-            ? () => {}
+            ? undefined
             : () => {
                 open();
               }
         }
-        style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
+        style={index === 0 && activeIndex !== null ? { border: 0 } : {}}
         id={index}
         ref={aboutSection}
       >
@@ -87,7 +112,7 @@ const ProjectMobile = ({
               ? () => {
                   close();
                 }
-              : () => {}
+              : undefined
           }
         >
           <div
@@ -130,6 +155,7 @@ const ProjectMobile = ({
                     loading="lazy"
                     placeholder="blur"
                     blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                    alt=""
                   />
                 </div>
               ))}
@@ -143,16 +169,15 @@ const ProjectMobile = ({
             />
           )}
 
-          {active ? (
+          {active && (
             <div className={styles.MBControls}>
               <p onClick={() => setShowIndex(!showIndex)}>
                 {showIndex ? "Slideshow" : "Index"}
               </p>
               <p>{!showIndex && `${currentSlide + 1} / ${images.length}`}</p>
             </div>
-          ) : (
-            ""
           )}
+
           <ProjectActiveMobile
             description={description}
             client={client}

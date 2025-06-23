@@ -1,39 +1,35 @@
-import { useEffect } from "react";
-
-import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 import styles from "../styles/landing.module.css";
 import Image from "next/image";
 
 export default function Landing({ landing }) {
-  const router = useRouter();
-  const showLanding = router.query.landing === "true";
+  const landingRef = useRef();
 
   useEffect(() => {
-    if (showLanding) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden"; // html
-      document.body.style.position = "fixed"; // prevent iOS bounce
-      document.body.style.width = "100%"; // ensure no shift
-    } else {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-    }
+    const section = landingRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(section);
 
     return () => {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
+      observer.unobserve(section);
     };
-  }, [showLanding]);
+  }, []);
 
   return (
-    <div
-      onClick={() => router.push(`/`, undefined, { shallow: true })}
-      className={`${styles.wrapper} ${showLanding ? "" : styles.hidden}`}
-    >
+    <div className={styles.wrapper} ref={landingRef}>
       {landing.headlineType == "text" ? <h1>{landing.headlineText}</h1> : ""}
       {landing.headlineType == "image" ? (
         <div className={styles.imageWrapper}>
@@ -41,7 +37,7 @@ export default function Landing({ landing }) {
         </div>
       ) : (
         ""
-      )}{" "}
+      )}
       {landing.headlineType === "video" ? (
         <div className={styles.imageWrapper}>
           <iframe

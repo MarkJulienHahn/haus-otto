@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import SelectedPress from "./SelectedPress";
+import Footer from "./Footer";
 
 import { PortableText } from "@portabletext/react";
 
@@ -47,7 +48,7 @@ const About = ({ data }) => {
               className={`${styles.menuItem} ${about && styles.menuItemActive}`}
             >
               <Link href={"/about"}>
-                <a>About</a>
+                <a>Info</a>
               </Link>
             </div>
           </div>
@@ -66,9 +67,11 @@ const About = ({ data }) => {
             <PortableText value={data.clients} />
           </div>
         </div>
-        <div className={`${styles.col3} ${styles.smallText}`}>
+        <div
+          className={`${styles.col3} ${styles.smallText} ${styles.exhibitionsColumn}`}
+        >
           <div className={`${styles.menuItem} ${styles.menuItemRow}`}>
-            <h2>Happenings</h2>
+            <h2>Exhibitions</h2>
             <h2>Year</h2>
           </div>
 
@@ -119,6 +122,26 @@ const About = ({ data }) => {
               </div>
             </div>
           )}
+
+          <div
+            className={`${styles.col3} ${styles.smallText} ${styles.workshopsMobile}`}
+          >
+            {data.workshops && (
+              <div className={styles.list}>
+                <div className={styles.menuItem}>
+                  <h2>Workshops, Lectures, Events</h2>
+                </div>
+                <div>
+                  {data.workshops?.map((show, i) => (
+                    <div className={styles.aboutEntry} key={i}>
+                      <h2>{show.title}</h2>
+                      <h2>{show.year}</h2>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className={styles.col2}>
@@ -174,7 +197,9 @@ const About = ({ data }) => {
           </div>
         </div>
 
-        <div className={`${styles.col3} ${styles.smallText}`}>
+        <div
+          className={`${styles.col3} ${styles.smallText} ${styles.workshopsDesktop}`}
+        >
           {data.workshops && (
             <div className={styles.list}>
               <div className={styles.menuItem}>
@@ -192,9 +217,8 @@ const About = ({ data }) => {
           )}
         </div>
       </div>
-      <div className={styles.footer}>
-        <Link href="/imprint">Imprint</Link>
-        <div>©H-O 2025 V1.2-DE</div>
+      <div className={styles.footerWrapper}>
+        <Footer />
       </div>
 
       {/* <div className={styles2.headerAboutBottomWrapper}>
