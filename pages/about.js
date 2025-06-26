@@ -1,24 +1,12 @@
-import Header from "../components/Header";
-import FooterAbout from "../components/FooterAbout";
-
-import Head from "next/head";
 import client from "../client";
 import About from "../components/About";
-
-import styles from "../styles/about.module.css";
+import styles from "../styles/Home.module.css";
 
 const about = ({ data }) => {
   return (
     <>
-      <Head>
-        <title>Haus Otto | About</title>
-        <meta name="description" content="Haus Otto wurde von Patrick Henry Nagel und Nils Körner gegründet, nachdem sie gemeinsam Industriedesign an der Staatlichen Akademie der Bildenden Künste in Stuttgart studiert hatten." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
-
-        <About data={data[0]} />
-      </main>
+      <About data={data[0]} />
+      <div className={styles.backdrop} />
     </>
   );
 };

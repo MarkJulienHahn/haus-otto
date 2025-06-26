@@ -50,10 +50,13 @@ const ProjectMobile = ({
 
     if (isActive && aboutSection.current) {
       const scrollToSection = () => {
-        aboutSection.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        setTimeout(
+          aboutSection.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          }),
+          500
+        );
       };
 
       // Wait for two animation frames to ensure layout is stable
@@ -103,8 +106,8 @@ const ProjectMobile = ({
         }
         style={index === 0 && activeIndex !== null ? { border: 0 } : {}}
         id={index}
-        ref={aboutSection}
       >
+        <div ref={aboutSection} className={styles.MBScrollAnchor} />
         <div
           className={styles.MBHeader}
           onClick={

@@ -47,6 +47,10 @@
   opacity: 1;
 }
 
+html {
+  scroll-snap-type: none;
+}
+
 html,
 body {
   padding: 0;
@@ -61,7 +65,13 @@ body {
   color: var(--primary-color);
   min-height: 100vh;
   overscroll-behavior: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 a {
@@ -72,14 +82,26 @@ a {
 h1,
 h2,
 p {
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 22.5px;
+  line-height: 26px;
+  letter-spacing: -0.02em;
+  word-spacing: -0.07em;
   font-weight: normal;
   margin: 0;
 }
 
 p a {
   border-bottom: var(--border);
+}
+
+main {
+  padding: var(--margin-S);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.scrollSnapEnabled {
+  scroll-snap-type: y mandatory;
 }
 
 @media screen and (max-width: 1100px) {

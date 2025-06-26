@@ -19,18 +19,20 @@
   bottom: 0;
   left: 0;
   background: var(--bg-color);
-  height: 41px;
   display: flex;
-  padding: 8px 15px;
+  padding: var(--margin-S);
+  padding-bottom: calc(1.5 * var(--margin-S));
+  margin-left: 4px;
   font-size: var(--XSfontSize);
   line-height: var(--XSfontLineHeight);
+  width: 400px;
 }
 
 .footerHomeImprint {
   font-size: var(--XSfontSize);
   line-height: var(--XSfontLineHeight);
   position: absolute;
-  bottom: 17px;
+  bottom: calc(1.5 * var(--margin-S));
   text-align: right;
   padding-right: 10px;
   width: calc(100vw - 16px);
@@ -38,6 +40,10 @@
 
 .footerHomeWrapper a {
   margin-left: 2em;
+}
+.footerHomeImprint a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footerTop {
@@ -132,9 +138,9 @@
     display: none;
   }
   .footerHomeWrapper {
-    width: 100%;
+    width: unset;
     position: relative;
-    padding: 50px 7px 40px 15px;
+    padding: 50px 7px 20px 0px;
     justify-content: space-between;
   }
   .footerHomeImprint {
@@ -146,7 +152,6 @@
     position: relative;
     text-align: right;
     width: 50%;
-    padding-right: 5px;
     display: block;
   }
 }

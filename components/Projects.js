@@ -54,18 +54,25 @@ const Projects = ({ projects }) => {
     }
   }, [router.isReady, router.query.project, sortedProjects, activeIndex]);
 
-  // 👇 Intersection Observer for desktop
+  // 👇 Updated Intersection Observer for desktop
   useEffect(() => {
     const section = projectsRef.current;
-   
     if (!section) return;
+
+    const scrollContainer = document.documentElement;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          section.scrollIntoView({ behavior: "smooth" });
+          scrollContainer.style.scrollSnapType = "none";
+
+          section.scrollIntoView({ block: "start", behavior: "smooth" });
+
+          setTimeout(() => {
+            scrollContainer.style.scrollSnapType = "y mandatory";
+          }, 600);
         } else {
-          // setActiveIndex(null);
+          // Optional cleanup
           const { project, ...restQuery } = router.query;
         }
       },
@@ -74,19 +81,26 @@ const Projects = ({ projects }) => {
 
     observer.observe(section);
     return () => observer.unobserve(section);
-  }, [projectsRef.current]);
+  }, [projectsRef]);
 
   // 👇 Intersection Observer for mobile
   useEffect(() => {
     const section = projectsMobileRef.current;
     if (!section) return;
 
+    const scrollContainer = document.documentElement;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          scrollContainer.style.scrollSnapType = "none";
+
           section.scrollIntoView({ behavior: "smooth" });
+
+          setTimeout(() => {
+            scrollContainer.style.scrollSnapType = "y mandatory";
+          }, 600);
         } else {
-          // setActiveIndex(null);
           const { project, ...restQuery } = router.query;
         }
       },
@@ -100,14 +114,7 @@ const Projects = ({ projects }) => {
   return (
     <>
       <div className={styles.projectsWrapper} ref={projectsRef}>
-        <div
-          className={styles.projectsInner}
-          // style={
-          //   !activeIndex
-          //     ? { paddingTop: refHeight - height + 80 }
-          //     : { paddingTop: 0 }
-          // }
-        >
+        <div className={styles.projectsInner}>
           <div className={styles.projectHeadlines}>
             <div className={styles.projectHeadlinesInner}>
               <h1
@@ -125,7 +132,7 @@ const Projects = ({ projects }) => {
                   })
                 }
               >
-                Client/Collaborator{" "}
+                <span className={styles.sorting}>Client/Collaborator </span>
                 {sortKey === "client" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
               </h1>
               <h1
@@ -143,7 +150,7 @@ const Projects = ({ projects }) => {
                   })
                 }
               >
-                Case{" "}
+                <span className={styles.sorting}>Case </span>
                 {sortKey === "case" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
               </h1>
               <h1
@@ -161,7 +168,7 @@ const Projects = ({ projects }) => {
                   })
                 }
               >
-                Year{" "}
+                <span className={styles.sorting}>Year </span>
                 {sortKey === "year" ? (sortOrder === "asc" ? "↑" : "↓") : ""}
               </h1>
               <h1 className={`${styles.projectCol1} ${styles.alignRight}`}>
@@ -170,25 +177,27 @@ const Projects = ({ projects }) => {
             </div>
           </div>
           {sortedProjects.map((project, i) => (
-            <Project
-              key={i}
-              setActiveIndex={setActiveIndex}
-              activeIndex={activeIndex}
-              title={project.title}
-              slug={project.slug?.current}
-              categories={project.categories}
-              client={project.client}
-              photography={project.photography}
-              presskit={project.presskit?.url}
-              description={project.description}
-              year={project.year}
-              index={i}
-              images={project.images}
-              previewImage={project.previewImage}
-            />
+            <>
+              <Project
+                key={i}
+                setActiveIndex={setActiveIndex}
+                activeIndex={activeIndex}
+                title={project.title}
+                slug={project.slug?.current}
+                categories={project.categories}
+                client={project.client}
+                photography={project.photography}
+                presskit={project.presskit?.url}
+                description={project.description}
+                year={project.year}
+                index={i}
+                images={project.images}
+                previewImage={project.previewImage}
+              />
+            </>
           ))}
+          <Footer />
         </div>
-        <Footer />
       </div>
 
       <div className={styles.projectsMobileWrapper} ref={projectsMobileRef}>

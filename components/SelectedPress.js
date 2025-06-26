@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "../styles/about.module.css";
 
 const SelectedPress = ({
   lable,
@@ -12,6 +12,7 @@ const SelectedPress = ({
 }) => {
   return (
     <span
+      className={styles.selectedPressEntry}
       onMouseEnter={() => {
         setHoverImg(img), setHoverImgWidth(width), setHoverImgHeight(height);
       }}

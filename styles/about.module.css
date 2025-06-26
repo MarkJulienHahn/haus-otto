@@ -1,6 +1,4 @@
 .main {
-  padding: var(--margin-S) 0 var(--margin-S) var(--margin-S);
-  padding-left: 13px;
   position: relative;
   min-height: 100vh;
 }
@@ -11,8 +9,8 @@
   width: 100%;
   grid-gap: 25px;
   row-gap: 80px;
-  padding-right: 13px;
   margin-bottom: 40px;
+  padding: 0 calc(0.5 * var(--margin-S));
 }
 
 .wrapper p + p {
@@ -27,6 +25,7 @@
 }
 .col4 {
   grid-column: span 4;
+  margin-top: 43px;
 }
 .col5 {
   grid-column: span 5;
@@ -95,9 +94,15 @@
 }
 
 .headerImg {
+  width: 100vw;
+  height: 100svh;
   position: fixed;
   top: 0;
+  left: 0;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerImg img {
@@ -159,6 +164,19 @@
 
 .workshopsMobile {
   display: none;
+}
+
+.selectedPressEntry {
+  cursor: default;
+}
+
+.selectedPressEntry a {
+  cursor: pointer;
+}
+
+.selectedPressEntry:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -230,12 +248,10 @@
     line-height: var(--XSfontLineHeight);
   }
   .footerWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    position: relative;
+    display: block;
     font-size: var(--XSfontSize);
     line-height: var(--XSfontLineHeight);
-    border-top: var(--border);
     height: 31px;
   }
   .imprintTop {
@@ -246,12 +262,6 @@
   }
   .serviceColumn {
     grid-column: span 3;
-  }
-  .footerWrapper {
-    position: fixed;
-    bottom: 12px;
-    left: 0;
-    width: 100%;
   }
 }
 

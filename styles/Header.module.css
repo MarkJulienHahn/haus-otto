@@ -14,18 +14,19 @@
 }
 
 .headerLeftWrapper {
-  height: 27px;
-  width: 95px;
-  padding: 0 6px 4px 3px;
+  padding: var(--margin-S) 12px 4px var(--margin-S);
   display: flex;
-  justify-content: space-between;
   position: fixed;
-  top: 17px;
+  top: 0;
+  left: 0;
   z-index: 1000;
-  margin-left: 3px;
+  margin-left: 4px;
+  font-size: var(--XSfontSize);
+  background: var(--bg-color);
 }
 
-.headerPageIndex {
+.menuItemRight {
+  margin-right: 20px;
 }
 
 .headerAboutTopWrapper {
@@ -42,6 +43,7 @@
   justify-content: flex-start;
   height: 31px;
   width: clamp(300px, 20vw, 20vw);
+  z-index: 100;
 }
 
 .headerRightWrapper h2 {
@@ -129,8 +131,9 @@
 .headerRight {
   display: flex;
   position: absolute;
-  right: 0px;
-  top: 17px;
+  right: var(--margin-S);
+  top: var(--margin-S);
+  z-index: 1;
 }
 
 .colorSwitch {
@@ -140,7 +143,6 @@
   border-radius: 50%;
   margin: 4px 3px;
   cursor: pointer;
-  border: 0.5px solid;
 }
 
 .indexButton {
@@ -182,7 +184,9 @@
   }
 
   .headerLeftWrapper {
-    padding: 0 6px 4px 3px;
+    padding: 0 6px 6px 3px;
+    width: 100%;
+    z-index: 10000;
   }
 
   .headerWrapper {

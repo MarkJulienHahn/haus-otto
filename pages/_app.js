@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
-import '../styles/globals.css';
+import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  const [theme, setTheme] = useState(null); // null = not initialized yet
+import Layout from "./layout.js";
 
-  // Load theme from localStorage on mount
+export default function MyApp({ Component, pageProps }) {
+  const [theme, setTheme] = useState(null);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/about");
+      const json = await res.json();
+      setData(json);
+    }
+    fetchData();
+  }, []);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -16,9 +27,8 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-  // Apply theme class and persist it
   useEffect(() => {
-    if (!theme) return; // wait until theme is loaded
+    if (!theme) return;
 
     document.body.classList.remove("light", "dark-mode", "color-mode");
 
@@ -32,11 +42,11 @@ function MyApp({ Component, pageProps }) {
 
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  // Prevent initial render until theme is loaded (optional but avoids flicker)
   if (!theme) return null;
 
-  return <Component {...pageProps} theme={theme} setTheme={setTheme} />;
+  return (
+    <Layout data={data} setTheme={setTheme} theme={theme}>
+      <Component {...pageProps} theme={theme} setTheme={setTheme} />
+    </Layout>
+  );
 }
-
-export default MyApp;

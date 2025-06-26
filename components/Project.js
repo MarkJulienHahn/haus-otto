@@ -97,8 +97,6 @@ const Project = ({
     </span>
   ));
 
-  console.log(categories?.length);
-
   return (
     <>
       {mouseLable && (

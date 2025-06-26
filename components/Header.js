@@ -6,21 +6,21 @@ import Image from "next/image";
 
 import { useRouter } from "next/router";
 
-const Header = ({ setTheme, data }) => {
+const Header = ({ theme, setTheme, data }) => {
   const [portrait, showPortrait] = useState(false);
   const router = useRouter();
 
-  const landing = router.query.landing;
-  const about = router.pathname == "/about";
+  const home = router.pathname === "/";
+  const about = router.pathname === "/about";
 
   return (
     <>
-      {portrait && (
+      {portrait && data && (
         <div className={styles.portraitOverlay}>
           <Image
-            src={data.portrait.url}
-            width={data.portrait.dimensions.width}
-            height={data.portrait.dimensions.height}
+            src={data[0]?.portrait.url}
+            width={data[0]?.portrait.dimensions.width}
+            height={data[0]?.portrait.dimensions.height}
             layout="fill"
             objectFit="contain"
             loading="eager"
@@ -29,63 +29,53 @@ const Header = ({ setTheme, data }) => {
         </div>
       )}
 
-      <div className={styles.headerWrapper}>
-        <div className={styles.headerLeftWrapper}>
+      <div className={styles.headerLeftWrapper}>
+        <div className={styles.headerPageIndex}>
           <div
-            className={styles.headerPageIndex}
-            // onClick={() => setActiveIndex(null)}
+            className={`${styles.menuItem} ${styles.menuItemRight} ${
+              home ? styles.menuItemActive : ""
+            }`}
           >
-            <div
-              className={`${styles.menuItem} ${
-                landing == "true" && styles.menuItemActive
-              }`}
-              // onClick={() =>
-              //   router.push(`/?landing=true`, undefined, { shallow: true })
-              // }
-            >
-              Haus Otto
-            </div>
-          </div>
-          <div
-            onMouseEnter={
-              data?.portrait ? () => showPortrait(true) : () => {}
-            }
-            onMouseLeave={
-              data?.portrait ? () => showPortrait(false) : () => {}
-            }
-            className={`${styles.menuItem} ${about && styles.menuItemActive}`}
-          >
-            <Link href={"/about"}>
-              <a>Info</a>
+            <Link href={"/"}>
+              <a>Haus Otto</a>
             </Link>
           </div>
         </div>
-        <div className={styles.headerRight}>
-          <div
-            className={styles.colorSwitch}
-            onClick={() => setTheme("light")}
-            style={{ background: "white" }}
-          />
-          <div
-            className={styles.colorSwitch}
-            onClick={() => setTheme("dark")}
-            style={{ background: "black" }}
-          />
-          <div
-            className={styles.colorSwitch}
-            onClick={() => setTheme("color")}
-            style={{ background: "#af7653" }}
-          />
-          <div
-            className={`${styles.indexButton} ${styles.menuItem} ${
-              landing !== "true" && !about && styles.menuItemActive
-            }`}
-            onClick={() => router.push(`/`, undefined, { shallow: true })}
-          >
-            Projects
-          </div>
+        <div
+          onMouseEnter={() => showPortrait(true)}
+          onMouseLeave={() => showPortrait(false)}
+          className={`${styles.menuItem} ${about && styles.menuItemActive}`}
+        >
+          <Link href={"/about"}>
+            <a>Info</a>
+          </Link>
         </div>
       </div>
+      {home && (
+        <div className={styles.headerRight}>
+          {theme != "light" && (
+            <div
+              className={styles.colorSwitch}
+              onClick={() => setTheme("light")}
+              style={{ background: "white" }}
+            />
+          )}
+          {theme != "dark" && (
+            <div
+              className={styles.colorSwitch}
+              onClick={() => setTheme("dark")}
+              style={{ background: "black" }}
+            />
+          )}
+          {theme != "color" && (
+            <div
+              className={styles.colorSwitch}
+              onClick={() => setTheme("color")}
+              style={{ background: "#af7653" }}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 };
