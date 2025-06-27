@@ -200,7 +200,6 @@ const Projects = ({ projects, isLanding, setIsLanding }) => {
                 previewImage={project.previewImage}
                 isLanding={isLanding}
               />
-              {height}
             </>
           ))}
           <Footer />
