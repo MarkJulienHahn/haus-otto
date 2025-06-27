@@ -28,6 +28,11 @@
 
 .projectSingleWrapper {
   display: flex;
+  opacity: 0.3;
+}
+
+.projectSingleWrapper:hover {
+  opacity: 1;
 }
 
 .projectRowLeft {
@@ -37,9 +42,13 @@
   justify-content: space-between;
 }
 
-.projectSingleWrapper:hover .projectHeader h1 {
+/* .projectSingleWrapper:hover .projectHeader h1 {
   background: var(--primary-color);
   color: var(--bg-color);
+} */
+
+.projectSingleWrapperActive {
+  opacity: 1;
 }
 
 .projectActiveWrapper {
@@ -70,7 +79,8 @@
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 32px;
+  background: var(--bg-color);
+  top: 34px;
   right: 0;
 }
 
@@ -137,10 +147,10 @@
   align-items: center;
 }
 
-.projectHeader h2:hover {
+/* .projectHeader h2:hover {
   background: var(--primary-color);
   color: var(--bg-color);
-}
+} */
 
 .projectColumnRight {
   width: 70%;
@@ -159,12 +169,13 @@
 }
 
 .projectCol1 {
-  width: 10%;
+  width: 56px;
 }
 
 .projectCol2 {
   width: 30%;
-  min-width: 360px;
+  min-width: 300px;
+  white-space: nowrap;
 }
 
 .sliderLeftbutton {
@@ -183,16 +194,24 @@
   pointer-events: auto;
 }
 
+.imageSwitch {
+  cursor: pointer;
+}
+
+.imageSwitch:hover {
+  text-decoration: underline;
+}
+
 .sliderOuter {
   width: 55vw;
   height: 50vh;
 }
 
 .slider {
-  position: absolute;
-  top: 62px;
+  position: fixed;
+  top: 42px;
   left: calc(25% + 12px);
-  height: calc(100vh - 85px);
+  height: calc(100vh - 72px);
   width: calc(75% - 20px);
   z-index: 100;
   cursor: none;
@@ -248,9 +267,7 @@
 }
 
 .downloadButton a:hover {
-  color: var(--bg-color);
-  background: var(--primary-color);
-  outline: 2px solid var(--primary-color);
+  text-decoration: underline;
 }
 
 .downloadButton a {
@@ -283,25 +300,27 @@
 
 .MBHeader {
   padding: 8px 4px 0 3px;
-  height: 24px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: -33px;
+  top: -36px;
   z-index: 1000;
+  background: var(--bg-color);
+  /* border: 2px solid red; */
 }
 
 .MBHeaderLeft {
   padding-left: 9px;
-  width: 33%;
+  width: 48%;
   display: flex;
   justify-content: space-between;
 }
 
 .MBHeaderLeft p {
   font-size: var(--XSfontSize);
+  line-height: var(--XSfontLineHeight);
 }
 
 .MBSlider {
@@ -322,7 +341,7 @@
   width: 10px;
   height: 10px;
   position: absolute;
-  top: -18px;
+  top: -27px;
 }
 
 .MBArchiveWrapper {

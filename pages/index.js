@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { useState } from "react";
 
 import client from "../client";
 import styles from "../styles/Home.module.css";
@@ -9,10 +9,18 @@ import Landing from "../components/Landing";
 import Header from "../components/Header";
 
 export default function Home({ landing, projects, data, setTheme }) {
+  const [isLanding, setIsLanding] = useState(true);
+  console.log(isLanding)
   return (
     <>
-      <Landing landing={landing} />
-      <Projects setTheme={setTheme} projects={projects} data={data[0]} />
+      <Landing landing={landing} setIsLanding={setIsLanding} />
+      <Projects
+        setTheme={setTheme}
+        projects={projects}
+        data={data[0]}
+        isLanding={isLanding}
+        setIsLanding={setIsLanding}
+      />
       <Cookies />
       <div className={styles.backdrop} />
     </>

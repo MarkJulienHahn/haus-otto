@@ -8,8 +8,10 @@ import Project from "./Project";
 import ProjectMobile from "./ProjectMobile";
 import Footer from "./Footer";
 
-const Projects = ({ projects }) => {
-  const { height } = useWindowDimensions();
+import { use100vh } from "react-div-100vh";
+
+const Projects = ({ projects, isLanding, setIsLanding }) => {
+  const height = use100vh();
 
   const [sortKey, setSortKey] = useState("year");
   const [sortOrder, setSortOrder] = useState("desc");
@@ -67,6 +69,7 @@ const Projects = ({ projects }) => {
           scrollContainer.style.scrollSnapType = "none";
 
           section.scrollIntoView({ block: "start", behavior: "smooth" });
+          setIsLanding(false);
 
           setTimeout(() => {
             scrollContainer.style.scrollSnapType = "y mandatory";
@@ -110,6 +113,8 @@ const Projects = ({ projects }) => {
     observer.observe(section);
     return () => observer.unobserve(section);
   }, []);
+
+  console.log(height);
 
   return (
     <>
@@ -193,14 +198,20 @@ const Projects = ({ projects }) => {
                 index={i}
                 images={project.images}
                 previewImage={project.previewImage}
+                isLanding={isLanding}
               />
+              {height}
             </>
           ))}
           <Footer />
         </div>
       </div>
 
-      <div className={styles.projectsMobileWrapper} ref={projectsMobileRef}>
+      <div
+        className={styles.projectsMobileWrapper}
+        ref={projectsMobileRef}
+        style={{ height: height }}
+      >
         {projects.map((project, i) => (
           <ProjectMobile
             key={i}

@@ -38,7 +38,7 @@ const About = ({ data }) => {
           <div className={styles.textBlock}>
             <PortableText value={data.services} />
           </div>
-          <div className={styles.menuItem}>Clients</div>
+          <div className={styles.menuItem}>Slected Clients</div>
           <div className={styles.textBlock}>
             <PortableText value={data.clients} />
           </div>
@@ -47,15 +47,12 @@ const About = ({ data }) => {
           className={`${styles.col3} ${styles.smallText} ${styles.exhibitionsColumn}`}
         >
           <div className={`${styles.menuItem} ${styles.menuItemRow}`}>
-            <h2>Exhibitions</h2>
+            <h2>Upcoming Exhibitions</h2>
             <h2>Year</h2>
           </div>
 
           {data.upcomingShows && (
             <div className={styles.list}>
-              <div className={styles.menuItem}>
-                <h2>Upcoming Shows</h2>
-              </div>
               <div>
                 {data.upcomingShows?.map((show, i) => (
                   <div className={styles.aboutEntry} key={i}>
@@ -70,7 +67,7 @@ const About = ({ data }) => {
           {data.pastShows && (
             <div className={styles.list}>
               <div className={styles.menuItem}>
-                <h2>Past Shows</h2>
+                <h2>Past Exhibitions</h2>
               </div>
               <div>
                 {data.pastShows?.map((show, i) => (
@@ -134,7 +131,7 @@ const About = ({ data }) => {
         <div className={styles.col2}>
           <div className={styles.menuItem}>Contact</div>
           <div className={styles.textBlock}>
-            {data.mail}
+            <a href={`mailto:${data.mail}`}>{data.mail}</a>
             <br />
             {data.phone}
             <br />

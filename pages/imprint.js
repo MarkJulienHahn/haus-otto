@@ -10,15 +10,7 @@ const imprint = ({ setTheme, data }) => {
 
   return (
     <>
-      <Head>
-        <title>Haus Otto | Imprint</title>
-        <meta
-          name="description"
-          content="Haus Otto wurde von Patrick Henry Nagel und Nils Körner gegründet, nachdem sie gemeinsam Industriedesign an der Staatlichen Akademie der Bildenden Künste in Stuttgart studiert hatten."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <div className={styles.imprintWrapper}>
           <Header
             data={data}
@@ -26,7 +18,7 @@ const imprint = ({ setTheme, data }) => {
           />
           <PortableText value={data[0].imprint} />
         </div>
-      </main>
+      </div>
     </>
   );
 };

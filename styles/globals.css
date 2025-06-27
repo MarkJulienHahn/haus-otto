@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: "MJH-Regular";
-  src: url("/fonts/MJH-100-Regular.otf") format("opentype");
+  font-family: "Monument-Regular";
+  src: url("/fonts/ABCMonumentGrotesk-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,8 +17,8 @@
   --margin-M: 30px;
   --margin-S: 8px;
 
-  --XSfontSize: 11px;
-  --XSfontLineHeight: 14px;
+  --XSfontSize: 13px;
+  --XSfontLineHeight: 16px;
 
   --border: 1.5px solid;
 
@@ -55,10 +55,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "MJH-Regular", sans-serif;
+  font-family: "Monument-Regular", sans-serif;
   font-size: 20px;
   line-height: 23px;
-  letter-spacing: -0.01em;
   font-weight: normal;
   scroll-behavior: smooth;
   background: var(--bg-color);
@@ -84,14 +83,14 @@ h2,
 p {
   font-size: 22.5px;
   line-height: 26px;
-  letter-spacing: -0.02em;
   word-spacing: -0.07em;
   font-weight: normal;
   margin: 0;
 }
 
 p a {
-  border-bottom: var(--border);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 main {
@@ -111,9 +110,23 @@ main {
     --margin-M: 30px;
     --margin-S: 8px;
 
-    --XSfontSize: 12px;
-    --XSfontLineHeight: 14px;
+    --XSfontSize: 11px;
+    --XSfontLineHeight: 13px;
 
     --border: 1.5px solid var(--primary-color);
+  }
+
+  body {
+    font-size: 13pt;
+    line-height: 20px;
+  }
+  h1,
+  h2,
+  p {
+    font-size: 13pt;
+    line-height: 20px;
+    word-spacing: -0.07em;
+    font-weight: normal;
+    margin: 0;
   }
 }

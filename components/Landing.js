@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "../styles/landing.module.css";
 import Image from "next/image";
 
-export default function Landing({ landing }) {
+export default function Landing({ landing, setIsLanding }) {
   const landingRef = useRef();
   const [atTop, setAtTop] = useState(true);
 
@@ -14,6 +14,7 @@ export default function Landing({ landing }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           section.scrollIntoView({ behavior: "smooth" });
+          setIsLanding(true);
         }
       },
       { root: null, threshold: 0.1 }

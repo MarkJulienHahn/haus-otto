@@ -11,6 +11,7 @@ import styles from "../styles/project.module.css";
 const Project = ({
   setActiveIndex,
   activeIndex,
+  isLanding,
   title,
   categories,
   year,
@@ -104,7 +105,7 @@ const Project = ({
       )}
 
       <div
-        className={styles.projectSingleWrapper}
+        className={`${styles.projectSingleWrapper} ${active && styles.projectSingleWrapperActive}`}
         onClick={() => {
           if (!active) {
             setActiveIndex(index);
@@ -112,7 +113,6 @@ const Project = ({
           }
         }}
         ref={aboutSection}
-        // style={index == 0 && activeIndex !== null ? { border: 0 } : {}}
       >
         {activeIndex === null && (
           <div className={styles.projectOverlay}>
@@ -131,8 +131,8 @@ const Project = ({
               style={
                 active
                   ? {
-                      background: "var(--primary-color)",
-                      color: "var(--bg-color)",
+                      color: "var(--primary-color)",
+                      background: "var(--bg-color)",
                     }
                   : {}
               }
@@ -150,7 +150,7 @@ const Project = ({
               &nbsp;{title}&nbsp;
             </h1>
             {active && (
-              <h2 onClick={() => setShowIndex(!showIndex)}>
+              <h2 className={styles.imageSwitch} onClick={() => setShowIndex(!showIndex)}>
                 {active && !showIndex && "Index"}
                 {active && showIndex && "Slideshow"}
               </h2>
@@ -165,7 +165,7 @@ const Project = ({
           />
         </div>
 
-        {active && !showIndex && (
+        {active && !showIndex && !isLanding && (
           <div className={styles.sliderOuter}>
             <div className={styles.slider}>
               {imageArray.map((image) => image)}

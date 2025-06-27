@@ -97,6 +97,7 @@ const ProjectMobile = ({
       <div ref={projectRef}></div>
       <div
         className={styles.MBprojectSingleWrapper}
+        style={{ opacity: active ? "1" : "0.3" }}
         onClick={
           active
             ? undefined
@@ -104,7 +105,6 @@ const ProjectMobile = ({
                 open();
               }
         }
-        style={index === 0 && activeIndex !== null ? { border: 0 } : {}}
         id={index}
       >
         <div ref={aboutSection} className={styles.MBScrollAnchor} />
@@ -122,11 +122,10 @@ const ProjectMobile = ({
             style={
               active
                 ? {
-                    background: "var(--primary-color)",
-                    color: "var(--bg-color)",
+                    background: "var(--bg-color)",
+                    // color: "var(--bg-color)",
                     height: "36px",
                     padding: "0 8px",
-                    marginLeft: "4px",
                     transform: "translateX(-8px)",
                     display: "flex",
                     justifyContent: "center",
@@ -137,8 +136,11 @@ const ProjectMobile = ({
           >
             {title}
           </div>
+          {/* <div className={styles.MBHeaderLeft}>
+            <p>{year}</p>
+          </div> */}
           <div className={styles.MBHeaderLeft}>
-            <p></p>
+            <p>{client}</p>
             <p>{year}</p>
           </div>
         </div>
