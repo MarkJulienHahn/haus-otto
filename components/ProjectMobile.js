@@ -97,7 +97,7 @@ const ProjectMobile = ({
       <div ref={projectRef}></div>
       <div
         className={styles.MBprojectSingleWrapper}
-        style={{ opacity: active ? "1" : "0.3" }}
+        style={{ opacity: !active && activeIndex != null ? "0.3" : "1" }}
         onClick={
           active
             ? undefined

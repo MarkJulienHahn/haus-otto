@@ -105,7 +105,9 @@ const Project = ({
       )}
 
       <div
-        className={`${styles.projectSingleWrapper} ${active && styles.projectSingleWrapperActive}`}
+        className={`${styles.projectSingleWrapper} ${
+          active && styles.projectSingleWrapperActive
+        }`}
         onClick={() => {
           if (!active) {
             setActiveIndex(index);
@@ -125,92 +127,97 @@ const Project = ({
           </div>
         )}
 
-        <div className={styles.projectColumnLeft}>
-          <div className={styles.projectHeader}>
-            <h1
-              style={
-                active
-                  ? {
-                      color: "var(--primary-color)",
-                      background: "var(--bg-color)",
-                    }
-                  : {}
-              }
-              onClick={
-                active
-                  ? async () => {
-                      await router.replace(router.pathname, undefined, {
-                        shallow: true,
-                      });
-                      setActiveIndex(null);
-                    }
-                  : () => {}
-              }
-            >
-              &nbsp;{title}&nbsp;
-            </h1>
-            {active && (
-              <h2 className={styles.imageSwitch} onClick={() => setShowIndex(!showIndex)}>
-                {active && !showIndex && "Index"}
-                {active && showIndex && "Slideshow"}
+        <div
+          className={styles.projectColumn}
+          style={active ? { opacity: "1" } : {}}
+        >
+          <div className={styles.projectColumnLeft}>
+            <div className={styles.projectHeader}>
+              <h1
+                style={
+                  active
+                    ? {
+                        color: "var(--primary-color)",
+                        background: "var(--bg-color)",
+                      }
+                    : {}
+                }
+                onClick={
+                  active
+                    ? async () => {
+                        await router.replace(router.pathname, undefined, {
+                          shallow: true,
+                        });
+                        setActiveIndex(null);
+                      }
+                    : () => {}
+                }
+              >
+                &nbsp;{title}&nbsp;
+              </h1>
+              {active && (
+                <h2
+                  className={styles.imageSwitch}
+                  onClick={() => setShowIndex(!showIndex)}
+                >
+                  {active && !showIndex && "Index"}
+                  {active && showIndex && "Slideshow"}
+                </h2>
+              )}
+            </div>
+            <ProjectActive
+              description={description}
+              client={client}
+              photography={photography}
+              presskit={presskit}
+              active={active}
+            />
+          </div>
+          {active && !showIndex && !isLanding && (
+            <div className={styles.sliderOuter}>
+              <div className={styles.slider}>
+                {imageArray.map((image) => image)}
+              </div>
+            </div>
+          )}
+          {active && showIndex && (
+            <div className={styles.archiveOuter}>
+              <div className={styles.archiveWrapper}>
+                {images.map((image, i) => (
+                  <div className={styles.archiveColumn} key={i}>
+                    <Image
+                      src={image.url}
+                      layout="responsive"
+                      objectFit="contain"
+                      onClick={() => showImage(i)}
+                      // priority={i < 4 ? "true" : "false"}
+                      height={image.dimensions.height / 10}
+                      width={image.dimensions.width / 10}
+                      quality={1}
+                      placeholder="blur"
+                      blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className={styles.projectColumnRight}>
+            <div className={styles.projectHeaderRight}>
+              <h1 className={styles.projectCol2}>{client}</h1>
+              <h1 className={styles.projectCol2}>
+                {categories?.map((category, i) => (
+                  <span key={i}>
+                    {category}
+                    {i + 2 <= categories.length ? ", " : ""}
+                  </span>
+                ))}
+              </h1>
+              <h1 className={styles.projectCol1}>{year}</h1>
+              <h2 className={`${styles.downloadButton} ${styles.projectCol1}`}>
+                <a href={presskit}>Download</a>
               </h2>
-            )}
-          </div>
-          <ProjectActive
-            description={description}
-            client={client}
-            photography={photography}
-            presskit={presskit}
-            active={active}
-          />
-        </div>
-
-        {active && !showIndex && !isLanding && (
-          <div className={styles.sliderOuter}>
-            <div className={styles.slider}>
-              {imageArray.map((image) => image)}
             </div>
-          </div>
-        )}
-
-        {active && showIndex && (
-          <div className={styles.archiveOuter}>
-            <div className={styles.archiveWrapper}>
-              {images.map((image, i) => (
-                <div className={styles.archiveColumn} key={i}>
-                  <Image
-                    src={image.url}
-                    layout="responsive"
-                    objectFit="contain"
-                    onClick={() => showImage(i)}
-                    // priority={i < 4 ? "true" : "false"}
-                    height={image.dimensions.height / 10}
-                    width={image.dimensions.width / 10}
-                    quality={1}
-                    placeholder="blur"
-                    blurDataURL={`/_next/image?url=${image.url}&w=16&q=1`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className={styles.projectColumnRight}>
-          <div className={styles.projectHeaderRight}>
-            <h1 className={styles.projectCol2}>{client}</h1>
-            <h1 className={styles.projectCol2}>
-              {categories?.map((category, i) => (
-                <span key={i}>
-                  {category}
-                  {i + 2 <= categories.length ? ", " : ""}
-                </span>
-              ))}
-            </h1>
-            <h1 className={styles.projectCol1}>{year}</h1>
-            <h2 className={`${styles.downloadButton} ${styles.projectCol1}`}>
-              <a href={presskit}>Download</a>
-            </h2>
           </div>
         </div>
       </div>

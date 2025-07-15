@@ -30,8 +30,11 @@ const ProjectActiveMobile = ({
       >
         <div className={styles.projectInfo} ref={ref01}>
           <PortableText value={description} />
-          <p>{client && <>Client: {client}</>}</p>
-          <p>{photography && <>Photography: {photography}</>}</p>
+          <p>
+            {client && <>Client: {client}</>}
+            <br />
+            {photography && <>Photography: {photography}</>}
+          </p>
 
           {presskit && (
             <>

@@ -5,7 +5,7 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(12, 2fr);
+  grid-template-columns: repeat(12, 1fr);
   width: 100%;
   grid-gap: 25px;
   row-gap: 80px;
@@ -118,6 +118,8 @@
   padding: var(--margin-S) 0 var(--margin-S) 3px;
   margin-top: 50px;
   width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
 }
 
 .aboutText {
@@ -183,12 +185,55 @@
   text-underline-offset: 3px;
 }
 
+.aboutBottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 2fr);
+  width: 100vw;
+  grid-gap: 25px;
+  padding: var(--margin-S);
+  padding-bottom: 40px;
+  padding-right: 12px;
+  padding-left: 12px;
+  background: var(--bg-color);
+}
+
 .footerWrapper {
-  position: absolute;
+  position: fixed;
   display: block;
+  bottom: 0;
+  left: 10px;
+  width: 100vw;
   font-size: var(--XSfontSize);
   line-height: var(--XSfontLineHeight);
   height: 31px;
+}
+
+.list {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.closed {
+  max-height: 14.1em;
+}
+
+.open {
+  max-height: 500px; /* Large enough to show all content */
+  overflow: scroll;
+}
+
+.toggleButton {
+  display: block;
+  margin: 1rem auto;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: inherit;
 }
 
 @media screen and (max-width: 1400px) {
@@ -260,11 +305,19 @@
     line-height: var(--XSfontLineHeight);
   }
   .footerWrapper {
-    position: relative;
+    position: absolute;
     display: block;
     font-size: var(--XSfontSize);
     line-height: var(--XSfontLineHeight);
     height: 31px;
+    left: 0px;
+    max-width: 500px;
+  }
+  .aboutBottom {
+    position: relative;
+    display: block;
+    padding-left: 5px;
+    width: 100%;
   }
   .imprintTop {
     padding-bottom: 20px;
@@ -274,6 +327,9 @@
   }
   .serviceColumn {
     grid-column: span 3;
+  }
+  .closed {
+    max-height: 14em;
   }
 }
 

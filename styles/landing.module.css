@@ -17,6 +17,7 @@
 .wrapper h1 {
   font-size: 15vw;
   letter-spacing: -0.5vw;
+  font-family: "Monument-Medium"
 }
 
 .imageWrapper {
@@ -47,4 +48,12 @@
   .wrapper {
     margin-bottom: 20vh;
   }
+  .wrapper h1 {
+  font-size: 25vw;
+  line-height: 22vw;
+  text-align: center;
+  width: 100vw;
+  letter-spacing: -0.5vw;
+  font-family: "Monument-Medium"
+}
 }

@@ -114,8 +114,6 @@ const Projects = ({ projects, isLanding, setIsLanding }) => {
     return () => observer.unobserve(section);
   }, []);
 
-  console.log(height);
-
   return (
     <>
       <div className={styles.projectsWrapper} ref={projectsRef}>
@@ -181,27 +179,29 @@ const Projects = ({ projects, isLanding, setIsLanding }) => {
               </h1>
             </div>
           </div>
-          {sortedProjects.map((project, i) => (
-            <>
-              <Project
-                key={i}
-                setActiveIndex={setActiveIndex}
-                activeIndex={activeIndex}
-                title={project.title}
-                slug={project.slug?.current}
-                categories={project.categories}
-                client={project.client}
-                photography={project.photography}
-                presskit={project.presskit?.url}
-                description={project.description}
-                year={project.year}
-                index={i}
-                images={project.images}
-                previewImage={project.previewImage}
-                isLanding={isLanding}
-              />
-            </>
-          ))}
+          <div className={styles.hoverWrapper}>
+            {sortedProjects.map((project, i) => (
+              <>
+                <Project
+                  key={i}
+                  setActiveIndex={setActiveIndex}
+                  activeIndex={activeIndex}
+                  title={project.title}
+                  slug={project.slug?.current}
+                  categories={project.categories}
+                  client={project.client}
+                  photography={project.photography}
+                  presskit={project.presskit?.url}
+                  description={project.description}
+                  year={project.year}
+                  index={i}
+                  images={project.images}
+                  previewImage={project.previewImage}
+                  isLanding={isLanding}
+                />
+              </>
+            ))}
+          </div>
           <Footer />
         </div>
       </div>
@@ -228,7 +228,9 @@ const Projects = ({ projects, isLanding, setIsLanding }) => {
             previewImage={project.previewImage}
           />
         ))}
-        <Footer />
+        <div style={{paddingRight: "4px"}}>
+          <Footer />
+        </div>
       </div>
     </>
   );

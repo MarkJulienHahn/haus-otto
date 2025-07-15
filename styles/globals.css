@@ -6,7 +6,18 @@
 
 @font-face {
   font-family: "Monument-Regular";
-  src: url("/fonts/ABCMonumentGrotesk-Regular.otf") format("opentype");
+  src: url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff2") format("woff2"),
+    url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff") format("woff"),
+    url("/fonts/ABCMonumentGrotesk-Regular-Trial.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Monument-Medium";
+  src: url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff2") format("woff2"),
+    url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff") format("woff"),
+    url("/fonts/ABCMonumentGrotesk-Medium-Trial.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }

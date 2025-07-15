@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import { PortableText } from "@portabletext/react";
 
 import styles from "../styles/about.module.css";
+import AboutAccordion from "./AboutAccordion";
 
 const About = ({ data }) => {
   const [hoverImg, setHoverImg] = useState(null);
@@ -32,7 +33,6 @@ const About = ({ data }) => {
             <PortableText value={data.about} />
           </div>
         </div>
-
         <div className={`${styles.col5} ${styles.serviceColumn}`}>
           <div className={styles.menuItem}>Services</div>
           <div className={styles.textBlock}>
@@ -47,7 +47,7 @@ const About = ({ data }) => {
           className={`${styles.col3} ${styles.smallText} ${styles.exhibitionsColumn}`}
         >
           <div className={`${styles.menuItem} ${styles.menuItemRow}`}>
-            <h2>Upcoming Exhibitions</h2>
+            <h2>Exhibitions</h2>
             <h2>Year</h2>
           </div>
 
@@ -64,21 +64,7 @@ const About = ({ data }) => {
             </div>
           )}
 
-          {data.pastShows && (
-            <div className={styles.list}>
-              <div className={styles.menuItem}>
-                <h2>Past Exhibitions</h2>
-              </div>
-              <div>
-                {data.pastShows?.map((show, i) => (
-                  <div className={styles.aboutEntry} key={i}>
-                    <h2>{show.title}</h2>
-                    <h2>{show.year}</h2>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {data.pastShows && <AboutAccordion content={data.pastShows} />}
 
           {data.awards && (
             <div className={styles.list}>
@@ -116,15 +102,13 @@ const About = ({ data }) => {
             )}
           </div>
         </div>
+      </div>
 
+      <div className={styles.aboutBottom}>
         <div className={styles.col2}>
           <div className={styles.menuItem}>Office</div>
           <div className={styles.textBlock}>
             <PortableText value={data.contact} />
-          </div>
-          <div className={styles.menuItem}>Warehouse</div>
-          <div className={styles.textBlock}>
-            <PortableText value={data.contact2} />
           </div>
         </div>
 
@@ -189,9 +173,9 @@ const About = ({ data }) => {
             </div>
           )}
         </div>
-      </div>
-      <div className={styles.footerWrapper}>
-        <Footer />
+        <div className={styles.footerWrapper}>
+          <Footer />
+        </div>
       </div>
     </>
   );
