@@ -108,6 +108,7 @@ main {
   padding: var(--margin-S);
   padding-top: 0;
   padding-bottom: 0;
+  overflow: hidden;
 }
 
 .scrollSnapEnabled {
@@ -128,8 +129,8 @@ main {
   }
 
   body {
-    font-size: 13pt;
-    line-height: 20px;
+    font-size: 17pt;
+    line-height: 22px;
   }
   h1,
   h2,

@@ -8,7 +8,7 @@ export default function AboutAccordion({ content }) {
     <>
       <div className={`${styles.list} ${isOpen ? styles.open : styles.closed}`}>
         <div className={styles.menuItem}>
-          <h2>Past Exhibitions</h2>
+          <h2 style={{ paddingBottom: "6px" }}>Past Exhibitions</h2>
         </div>
         <div className={styles.entries}>
           {content?.map((show, i) => (

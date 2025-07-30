@@ -40,7 +40,7 @@ const SwiperInner = ({ active, swiperINDX, setCurrentSlide, images }) => {
     <div
       className={styles.MBSlider}
       style={
-        active ? { height: "100vw", marginTop: "10px" } : { height: "0px" }
+        active ? { height: "100vw" } : { height: "0px" }
       }
     >
       <Swiper className="swiper swiper-17-1" ref={swiperRef} loop={true}>

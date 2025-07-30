@@ -218,7 +218,7 @@
 }
 
 .closed {
-  max-height: 14.1em;
+  max-height: 13.5em;
 }
 
 .open {
@@ -329,7 +329,7 @@
     grid-column: span 3;
   }
   .closed {
-    max-height: 14em;
+    max-height: 13.4em;
   }
 }
 

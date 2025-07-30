@@ -47,7 +47,7 @@ const About = ({ data }) => {
           className={`${styles.col3} ${styles.smallText} ${styles.exhibitionsColumn}`}
         >
           <div className={`${styles.menuItem} ${styles.menuItemRow}`}>
-            <h2>Exhibitions</h2>
+            <h2 style={{ marginBottom: "6px" }}>Exhibitions</h2>
             <h2>Year</h2>
           </div>
 
@@ -69,7 +69,7 @@ const About = ({ data }) => {
           {data.awards && (
             <div className={styles.list}>
               <div className={styles.menuItem}>
-                <h2>Awards</h2>
+                <h2 style={{ paddingBottom: "6px" }}>Awards</h2>
               </div>
               <div>
                 {data.awards?.map((show, i) => (
@@ -88,7 +88,9 @@ const About = ({ data }) => {
             {data.workshops && (
               <div className={styles.list}>
                 <div className={styles.menuItem}>
-                  <h2>Workshops, Lectures, Events</h2>
+                  <h2 style={{ marginBottom: "6px" }}>
+                    Workshops, Lectures, Events
+                  </h2>
                 </div>
                 <div>
                   {data.workshops?.map((show, i) => (
@@ -115,16 +117,20 @@ const About = ({ data }) => {
         <div className={styles.col2}>
           <div className={styles.menuItem}>Contact</div>
           <div className={styles.textBlock}>
-            <a href={`mailto:${data.mail}`}>{data.mail}</a>
-            <br />
-            {data.phone}
-            <br />
-            <a href={data.instagram}>@haus.otto</a>
+            <p>
+              <a href={`mailto:${data.mail}`}>{data.mail}</a>
+              <br />
+              {data.phone}
+              <br />
+              <a href={data.instagram}>@haus.otto</a>
+            </p>
           </div>
         </div>
 
         <div className={`${styles.col5} ${styles.selectedPress}`}>
-          <h2 className={styles.menuItem}>Selected Press</h2>
+          <h2 className={styles.menuItem} style={{ paddingBottom: "6px" }}>
+            Selected Press
+          </h2>
           <h2>
             {selected?.map((press, i) => (
               <span key={i}>
@@ -160,7 +166,9 @@ const About = ({ data }) => {
           {data.workshops && (
             <div className={styles.list}>
               <div className={styles.menuItem}>
-                <h2>Workshops, Lectures, Events</h2>
+                <h2 style={{ paddingBottom: "6px" }}>
+                  Workshops, Lectures, Events
+                </h2>
               </div>
               <div>
                 {data.workshops?.map((show, i) => (

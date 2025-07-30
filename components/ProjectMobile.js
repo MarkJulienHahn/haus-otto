@@ -124,8 +124,9 @@ const ProjectMobile = ({
                 ? {
                     background: "var(--bg-color)",
                     // color: "var(--bg-color)",
-                    height: "36px",
+                    height: "43px",
                     padding: "0 8px",
+                    paddingTop: "10px",
                     transform: "translateX(-8px)",
                     display: "flex",
                     justifyContent: "center",
@@ -140,7 +141,7 @@ const ProjectMobile = ({
             <p>{year}</p>
           </div> */}
           <div className={styles.MBHeaderLeft}>
-            <p>{client}</p>
+            {/* <p>{client}</p> */}
             <p>{year}</p>
           </div>
         </div>
