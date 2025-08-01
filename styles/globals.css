@@ -7,8 +7,7 @@
 @font-face {
   font-family: "Monument-Regular";
   src: url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff2") format("woff2"),
-    url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff") format("woff"),
-    url("/fonts/ABCMonumentGrotesk-Regular-Trial.otf") format("opentype");
+    url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -16,8 +15,7 @@
 @font-face {
   font-family: "Monument-Medium";
   src: url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff2") format("woff2"),
-    url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff") format("woff"),
-    url("/fonts/ABCMonumentGrotesk-Medium-Trial.otf") format("opentype");
+    url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -135,8 +133,8 @@ main {
   h1,
   h2,
   p {
-    font-size: 13pt;
-    line-height: 20px;
+    font-size: 17pt;
+    line-height: 19pt;
     word-spacing: -0.07em;
     font-weight: normal;
     margin: 0;
