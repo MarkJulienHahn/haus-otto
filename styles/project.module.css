@@ -90,12 +90,15 @@
 }
 
 .projectHeadlines {
-  position: relative;
+  position: sticky;
   width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 50px;
   padding-top: var(--margin-S);
+  top: 0;
+  background: var(--bg-color);
+  z-index: 100;
 }
 
 .projectHeadlinesInner {
