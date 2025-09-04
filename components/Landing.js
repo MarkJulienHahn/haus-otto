@@ -44,7 +44,7 @@ export default function Landing({ landing, setIsLanding }) {
 
       {landing.headlineType === "image" && (
         <div className={styles.imageWrapper}>
-          <Image src={landing.imageUrl.url} layout="fill" objectFit="contain" />
+          <Image src={landing.imageUrl.url} layout="fill" objectFit="cover" />
         </div>
       )}
 
@@ -54,9 +54,6 @@ export default function Landing({ landing, setIsLanding }) {
             src={`https://player.vimeo.com/video/${landing.headlineVideoUrl}/?background=true`}
             width="100%"
             height="100%"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
             title="Vimeo video"
           />
         </div>
